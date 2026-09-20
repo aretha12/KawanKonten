@@ -1,9 +1,18 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { join } from 'path';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+  // Aktifkan validasi DTO (class-validator)
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+
+  // Sajikan folder public/ (berisi kawankonten.html)
+  app.useStaticAssets(join(__dirname, '..', 'public'));
 
   // Konfigurasi tampilan antarmuka web (Swagger)
   const config = new DocumentBuilder()
