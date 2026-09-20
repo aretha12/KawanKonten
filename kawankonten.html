@@ -3,1068 +3,1575 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KawanKonten — Kolaborasi kreator dan brand, tanpa drama</title>
+<title>KawanKonten — Kolaborasi kreator dan brand</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#0E0D12;
-    --ink-soft:#17151D;
-    --paper:#F5F1E8;
-    --paper-dim:#EAE4D6;
-    --violet:#6A5CFF;
-    --violet-dim:#48409e;
-    --teal:#00B88D;
-    --text-light:#F5F3EF;
-    --text-light-dim:#B9B6C4;
-    --text-dark:#17151D;
-    --text-dark-dim:#5B5748;
-    --line-light:rgba(245,243,239,0.14);
-    --line-dark:rgba(23,21,29,0.14);
-    --radius-s:10px;
-    --radius-m:18px;
-    --radius-l:28px;
-    --shadow-card: 0 30px 60px -30px rgba(0,0,0,0.5);
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --ink:#0E0D12;
-      --paper:#F5F1E8;
-    }
-  }
-  :root[data-theme="dark"]{
-    --ink:#0E0D12;
-    --paper:#F5F1E8;
-  }
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #F0F2F8;
+  color: #0D1B2A;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; font-family: inherit; }
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--ink);
-    color:var(--text-light);
-    font-family:'Inter',system-ui,-apple-system,sans-serif;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  img{max-width:100%;}
-  a{color:inherit;}
-  .wrap{
-    max-width:1180px;
-    margin:0 auto;
-    padding:0 28px;
-  }
-  h1,h2,h3,h4{
-    font-family:'Space Grotesk',system-ui,sans-serif;
-    margin:0;
-    line-height:1.05;
-    letter-spacing:-0.01em;
-  }
-  p{margin:0;}
-  .eyebrow{
-    font-family:'Space Grotesk',sans-serif;
-    font-size:14px;
-    font-weight:600;
-    color:var(--teal);
-  }
+/* ===== DESIGN TOKENS ===== */
+:root {
+  --bg: #F0F2F8;
+  --surface: #FFFFFF;
+  --primary: #5B4FE8;
+  --primary-light: #EEF0FF;
+  --primary-dark: #4238C8;
+  --green: #00C896;
+  --green-light: #E6FAF4;
+  --yellow: #F6A623;
+  --yellow-light: #FFF9EC;
+  --red: #F05252;
+  --blue: #3B82F6;
+  --ink: #0D1B2A;
+  --ink-2: #374151;
+  --ink-3: #6B7280;
+  --ink-4: #9CA3AF;
+  --border: #E5E7EB;
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+}
 
-  /* ---------- NAV ---------- */
-  nav{
-    position:sticky;
-    top:0;
-    z-index:50;
-    backdrop-filter:blur(14px);
-    background:rgba(14,13,18,0.72);
-    border-bottom:1px solid var(--line-light);
-  }
-  .nav-inner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:74px;
-  }
-  .logo{
-    font-family:'Space Grotesk',sans-serif;
-    font-weight:700;
-    font-size:22px;
-    letter-spacing:-0.02em;
-    display:flex;
-    gap:2px;
-  }
-  .logo span:first-child{color:var(--text-light);}
-  .logo span:last-child{color:var(--teal);}
-  .nav-links{
-    display:flex;
-    gap:34px;
-    font-size:15px;
-    color:var(--text-light-dim);
-  }
-  .nav-links a{text-decoration:none;transition:color .2s;}
-  .nav-links a:hover{color:var(--text-light);}
-  .nav-cta{
-    display:flex;
-    gap:12px;
-  }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:15px;
-    padding:11px 22px;
-    border-radius:999px;
-    border:1px solid transparent;
-    cursor:pointer;
-    text-decoration:none;
-    transition:transform .15s ease, background .2s ease, border-color .2s ease;
-  }
-  .btn:active{transform:scale(0.97);}
-  .btn-primary{background:var(--teal);color:#04241C;}
-  .btn-primary:hover{background:#04d19e;}
-  .btn-ghost{background:transparent;color:var(--text-light);border-color:var(--line-light);}
-  .btn-ghost:hover{border-color:var(--text-light);}
-  .btn-dark{background:var(--ink);color:var(--text-light);}
-  .btn-dark:hover{background:#221f2b;}
-  @media (max-width:860px){
-    .nav-links{display:none;}
-  }
+/* ===== LAYOUT ===== */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.page { display: none; min-height: 100vh; }
+.page.active { display: block; }
 
-  /* ---------- HERO ---------- */
-  header.hero{
-    padding:96px 0 60px;
-    position:relative;
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.05fr 0.95fr;
-    gap:56px;
-    align-items:center;
-  }
-  .hero h1{
-    font-size:clamp(40px,5.4vw,66px);
-    font-weight:700;
-  }
-  .hero h1 em{
-    font-style:normal;
-    color:var(--teal);
-  }
-  .hero-sub{
-    margin-top:22px;
-    font-size:18px;
-    line-height:1.6;
-    color:var(--text-light-dim);
-    max-width:52ch;
-  }
-  .hero-ctas{
-    margin-top:34px;
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-  }
-  .hero-note{
-    margin-top:22px;
-    font-size:14px;
-    color:var(--text-light-dim);
-  }
-  .hero-note strong{color:var(--text-light);}
+/* ===== NAV ===== */
+.nav {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-inner {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 800; font-size: 20px; letter-spacing: -0.02em;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, #5B4FE8, #818CF8);
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo-icon svg { width: 20px; height: 20px; }
+.logo-kawan { color: var(--ink); }
+.logo-konten { color: var(--primary); }
+.nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; color: var(--ink-3); }
+.nav-links a:hover, .nav-links a.active { color: var(--primary); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.mode-pill {
+  display: flex; align-items: center; gap: 7px;
+  background: var(--ink); color: #fff;
+  font-size: 13px; font-weight: 600;
+  padding: 8px 16px; border-radius: 999px;
+  border: none;
+}
+.mode-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green);
+}
+.nav-tagline { font-size: 13px; color: var(--ink-3); }
 
-  /* media kit card mockup */
-  .kit-stage{
-    position:relative;
-    height:460px;
-  }
-  .kit-card{
-    position:absolute;
-    width:300px;
-    background:var(--paper);
-    color:var(--text-dark);
-    border-radius:var(--radius-l);
-    padding:26px;
-    box-shadow:var(--shadow-card);
-  }
-  .kit-card.main{
-    top:10px;
-    left:50%;
-    transform:translateX(-50%) rotate(-3deg);
-    z-index:3;
-  }
-  .kit-avatar{
-    width:56px;height:56px;border-radius:50%;
-    background:linear-gradient(135deg,var(--violet),#9186ff);
-    display:flex;align-items:center;justify-content:center;
-    color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;
-  }
-  .kit-top{display:flex;align-items:center;gap:14px;}
-  .kit-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;}
-  .kit-handle{font-size:13px;color:var(--text-dark-dim);}
-  .kit-tags{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
-  .kit-tag{
-    font-size:12px;font-weight:600;
-    padding:5px 10px;border-radius:999px;
-    background:rgba(106,92,255,0.12);color:var(--violet-dim);
-  }
-  .kit-stats{
-    margin-top:20px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-    border-top:1px solid var(--line-dark);
-    padding-top:18px;
-  }
-  .kit-stat-label{font-size:11.5px;color:var(--text-dark-dim);text-transform:none;}
-  .kit-stat-value{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;margin-top:2px;}
-  .kit-rate{
-    margin-top:18px;
-    background:var(--ink);
-    color:var(--text-light);
-    border-radius:var(--radius-s);
-    padding:14px 16px;
-  }
-  .kit-rate-label{font-size:11.5px;color:var(--text-light-dim);}
-  .kit-rate-value{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;color:var(--teal);margin-top:2px;}
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; font-weight: 600; font-size: 14px;
+  padding: 12px 24px; border-radius: 999px;
+  border: none; transition: all .18s ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-outline {
+  background: transparent; color: var(--ink-2);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--ink-3); }
+.btn-ghost { background: transparent; color: var(--primary); font-weight: 600; }
+.btn-ghost:hover { text-decoration: underline; }
+.btn-dark { background: var(--ink); color: #fff; }
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+.btn-lg { padding: 16px 36px; font-size: 16px; border-radius: 16px; }
 
-  .offer-card{
-    position:absolute;
-    bottom:18px;
-    right:0;
-    width:260px;
-    background:var(--ink-soft);
-    border:1px solid var(--line-light);
-    border-radius:var(--radius-m);
-    padding:18px;
-    z-index:4;
-    transform:rotate(2.5deg);
-    box-shadow:var(--shadow-card);
-  }
-  .offer-top{display:flex;align-items:center;gap:10px;}
-  .offer-dot{width:9px;height:9px;border-radius:50%;background:var(--teal);flex:none;}
-  .offer-brand{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;}
-  .offer-body{margin-top:10px;font-size:13px;line-height:1.5;color:var(--text-light-dim);}
-  .offer-cta{
-    margin-top:12px;
-    display:flex;
-    gap:8px;
-  }
-  .offer-cta span{
-    font-size:12px;font-weight:600;
-    padding:7px 12px;border-radius:999px;
-  }
-  .offer-cta .accept{background:var(--teal);color:#04241C;}
-  .offer-cta .decline{color:var(--text-light-dim);border:1px solid var(--line-light);}
+/* ===== CARDS ===== */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow);
+}
 
-  .blob{
-    position:absolute;
-    width:420px;height:420px;
-    border-radius:50%;
-    background:radial-gradient(circle at 30% 30%, rgba(106,92,255,0.35), transparent 70%);
-    top:-80px;right:-140px;
-    z-index:0;
-    pointer-events:none;
-  }
+/* ===== STAT CARDS ===== */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-m);
+  padding: 24px;
+  cursor: pointer;
+  transition: box-shadow .18s, transform .18s;
+}
+.stat-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.stat-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.stat-icon.violet { background: var(--primary-light); }
+.stat-icon.green { background: var(--green-light); }
+.stat-icon.blue { background: #EFF6FF; }
+.stat-icon.yellow { background: var(--yellow-light); }
+.stat-num {
+  font-size: 28px; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--ink);
+  margin-bottom: 4px;
+}
+.stat-label { font-size: 13px; color: var(--ink-3); margin-bottom: 4px; }
+.stat-sub { font-size: 12px; color: var(--ink-4); }
 
-  @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr;}
-    .kit-stage{height:420px;margin-top:10px;}
-  }
+/* ===== MODAL ===== */
+.modal-overlay {
+  display: none; position: fixed;
+  inset: 0; background: rgba(0,0,0,0.45);
+  z-index: 200; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #fff; border-radius: var(--radius-l);
+  padding: 32px; width: 100%; max-width: 520px;
+  max-height: 90vh; overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: modalIn .2s ease;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-header {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-bottom: 24px;
+}
+.modal-header h3 { font-size: 22px; font-weight: 800; color: var(--ink); }
+.modal-close {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg); border: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--ink-3);
+}
+.modal-close:hover { background: var(--border); }
+.modal-highlight {
+  border-radius: var(--radius-m);
+  padding: 20px 24px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.modal-highlight-num {
+  font-size: 42px; font-weight: 800;
+  letter-spacing: -0.03em; color: var(--ink);
+}
+.modal-highlight-sub { font-size: 13px; margin-top: 4px; }
+.modal-list-item {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  background: var(--bg);
+  border-radius: var(--radius-s);
+  padding: 16px 20px;
+  margin-bottom: 10px;
+}
+.modal-list-item:last-child { margin-bottom: 0; }
+.modal-item-left h4 { font-size: 15px; font-weight: 700; color: var(--ink); }
+.modal-item-left p { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.modal-item-right { text-align: right; }
+.modal-item-right .price {
+  font-size: 16px; font-weight: 800;
+  color: var(--primary);
+}
+.modal-item-right .pct { font-size: 12px; color: var(--green); font-weight: 600; }
+.modal-btn-full {
+  width: 100%; padding: 16px;
+  border-radius: 999px; border: none;
+  background: var(--primary); color: #fff;
+  font-size: 16px; font-weight: 700;
+  margin-top: 20px; cursor: pointer;
+}
+.modal-btn-full:hover { background: var(--primary-dark); }
 
-  /* ---------- STATS BAND ---------- */
-  .stats-band{
-    background:var(--paper);
-    color:var(--text-dark);
-    padding:56px 0;
-  }
-  .stats-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:24px;
-    flex-wrap:wrap;
-    margin-bottom:38px;
-  }
-  .stats-head h2{font-size:clamp(26px,3vw,34px);color:var(--text-dark);max-width:520px;}
-  .stats-head p{color:var(--text-dark-dim);max-width:340px;font-size:15px;line-height:1.55;}
-  .stats-row{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:1px;
-    background:var(--line-dark);
-    border:1px solid var(--line-dark);
-    border-radius:var(--radius-m);
-    overflow:hidden;
-  }
-  .stat-cell{
-    background:var(--paper);
-    padding:28px 22px;
-  }
-  .stat-num{
-    font-family:'Space Grotesk',sans-serif;
-    font-weight:700;
-    font-size:clamp(30px,3.4vw,42px);
-    color:var(--violet-dim);
-  }
-  .stat-label{
-    margin-top:8px;
-    font-size:13.5px;
-    color:var(--text-dark-dim);
-    line-height:1.4;
-  }
-  @media (max-width:760px){
-    .stats-row{grid-template-columns:1fr 1fr;}
-  }
+/* bar progress */
+.bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.bar-label { font-size: 13px; font-weight: 600; color: var(--ink-2); min-width: 110px; }
+.bar-track {
+  flex: 1; height: 8px; border-radius: 999px; background: var(--border);
+  overflow: hidden;
+}
+.bar-fill { height: 100%; border-radius: 999px; }
+.bar-count { font-size: 13px; font-weight: 600; color: var(--ink-2); min-width: 30px; text-align: right; }
 
-  /* ---------- SECTION HEADS ---------- */
-  section{padding:96px 0;}
-  .section-head{
-    max-width:600px;
-    margin-bottom:52px;
-  }
-  .section-head h2{
-    font-size:clamp(30px,3.6vw,44px);
-    margin-top:12px;
-  }
-  .section-head p{
-    margin-top:16px;
-    font-size:16.5px;
-    line-height:1.6;
-    color:var(--text-light-dim);
-  }
-  .light .section-head p{color:var(--text-dark-dim);}
+/* star rating bar */
+.rating-bar-row {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+}
+.rating-bar-label { font-size: 13px; color: var(--ink-3); min-width: 28px; }
+.rating-bar-track {
+  flex: 1; height: 8px; border-radius: 999px; background: var(--border); overflow: hidden;
+}
+.rating-bar-fill { height: 100%; border-radius: 999px; background: var(--yellow); }
+.rating-bar-count { font-size: 13px; color: var(--ink-3); min-width: 24px; text-align: right; }
 
-  /* ---------- FEATURES BENTO ---------- */
-  .bento{
-    display:grid;
-    grid-template-columns:repeat(12,1fr);
-    gap:18px;
-  }
-  .feat{
-    border-radius:var(--radius-l);
-    padding:32px;
-    position:relative;
-    overflow:hidden;
-  }
-  .feat-lg{
-    grid-column:span 7;
-    background:linear-gradient(160deg,var(--violet) 0%, #3d349e 100%);
-    color:#fff;
-    grid-row:span 2;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    min-height:360px;
-  }
-  .feat-md{
-    grid-column:span 5;
-    background:var(--ink-soft);
-    border:1px solid var(--line-light);
-    min-height:172px;
-  }
-  .feat-sm{
-    grid-column:span 4;
-    background:var(--ink-soft);
-    border:1px solid var(--line-light);
-    min-height:180px;
-  }
-  .feat h3{
-    font-size:22px;
-    font-weight:600;
-  }
-  .feat-lg h3{font-size:28px;}
-  .feat p{
-    margin-top:12px;
-    font-size:14.5px;
-    line-height:1.55;
-    color:var(--text-light-dim);
-  }
-  .feat-lg p{color:rgba(255,255,255,0.82);font-size:15.5px;max-width:44ch;}
-  .feat-index{
-    font-family:'Space Grotesk',sans-serif;
-    font-size:13px;
-    color:var(--teal);
-    font-weight:600;
-  }
-  .feat-lg .feat-index{color:rgba(255,255,255,0.7);}
-  .feat-link{
-    margin-top:20px;
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    font-size:14px;
-    font-weight:600;
-    color:#fff;
-    text-decoration:none;
-    width:fit-content;
-    border-bottom:1px solid rgba(255,255,255,0.5);
-    padding-bottom:2px;
-  }
-  @media (max-width:820px){
-    .feat-lg,.feat-md,.feat-sm{grid-column:span 12;grid-row:auto;min-height:0;}
-  }
+/* ===== BADGES / CHIPS ===== */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px; border-radius: 999px;
+}
+.badge-green { background: var(--green-light); color: #059669; }
+.badge-violet { background: var(--primary-light); color: var(--primary); }
+.badge-yellow { background: var(--yellow-light); color: #B45309; }
+.badge-grey { background: var(--bg); color: var(--ink-3); }
 
-  /* ---------- MATCHING DEMO ---------- */
-  .demo-panel{
-    background:var(--paper);
-    color:var(--text-dark);
-    border-radius:var(--radius-l);
-    padding:38px;
-  }
-  .chip-row{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:28px;
-  }
-  .chip{
-    font-size:14px;
-    font-weight:600;
-    padding:9px 18px;
-    border-radius:999px;
-    border:1px solid var(--line-dark);
-    background:transparent;
-    color:var(--text-dark);
-    cursor:pointer;
-    transition:background .15s, color .15s, border-color .15s;
-    font-family:'Inter',sans-serif;
-  }
-  .chip.active{
-    background:var(--text-dark);
-    color:var(--paper);
-    border-color:var(--text-dark);
-  }
-  .creator-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
-  }
-  .creator-card{
-    background:#fff;
-    border:1px solid var(--line-dark);
-    border-radius:var(--radius-m);
-    padding:20px;
-    transition:transform .18s ease, box-shadow .18s ease;
-  }
-  .creator-card.hidden{display:none;}
-  .cc-top{display:flex;align-items:center;gap:12px;}
-  .cc-avatar{
-    width:42px;height:42px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#fff;
-    flex:none;
-  }
-  .cc-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;}
-  .cc-cat{font-size:12px;color:var(--text-dark-dim);}
-  .cc-meta{
-    margin-top:14px;
-    display:flex;
-    justify-content:space-between;
-    font-size:12.5px;
-    color:var(--text-dark-dim);
-  }
-  .cc-meta b{display:block;color:var(--text-dark);font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;margin-top:1px;}
-  .cc-rating{
-    margin-top:14px;
-    font-size:12.5px;
-    color:#B8860B;
-    font-weight:600;
-  }
-  .empty-state{
-    grid-column:1/-1;
-    text-align:center;
-    padding:40px 0;
-    color:var(--text-dark-dim);
-    font-size:14.5px;
-  }
-  @media (max-width:900px){
-    .creator-grid{grid-template-columns:repeat(2,1fr);}
-  }
-  @media (max-width:560px){
-    .creator-grid{grid-template-columns:1fr;}
-  }
+.chip-filter {
+  font-size: 13px; font-weight: 600;
+  padding: 8px 18px; border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: #fff; color: var(--ink-2);
+  cursor: pointer; transition: all .15s;
+}
+.chip-filter.active {
+  background: var(--primary); color: #fff; border-color: var(--primary);
+}
+.chip-filter:hover:not(.active) { border-color: var(--ink-3); }
 
-  /* ---------- HOW IT WORKS ---------- */
-  .tabs{
-    display:inline-flex;
-    background:var(--ink-soft);
-    border:1px solid var(--line-light);
-    border-radius:999px;
-    padding:5px;
-    margin-bottom:40px;
-  }
-  .tab-btn{
-    font-family:'Inter',sans-serif;
-    font-weight:600;
-    font-size:14.5px;
-    padding:10px 22px;
-    border-radius:999px;
-    border:none;
-    background:transparent;
-    color:var(--text-light-dim);
-    cursor:pointer;
-  }
-  .tab-btn.active{background:var(--teal);color:#04241C;}
-  .steps{
-    display:none;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-  }
-  .steps.active{display:grid;}
-  .step{
-    border-top:1px solid var(--line-light);
-    padding-top:18px;
-  }
-  .step-num{
-    font-family:'Space Grotesk',sans-serif;
-    font-size:14px;
-    color:var(--teal);
-    font-weight:600;
-  }
-  .step h4{
-    margin-top:10px;
-    font-size:17px;
-    font-weight:600;
-  }
-  .step p{
-    margin-top:8px;
-    font-size:14px;
-    line-height:1.55;
-    color:var(--text-light-dim);
-  }
-  @media (max-width:820px){
-    .steps{grid-template-columns:1fr 1fr;}
-  }
-  @media (max-width:520px){
-    .steps{grid-template-columns:1fr;}
-  }
+/* ===== PROGRESS BAR ===== */
+.progress-track {
+  height: 6px; border-radius: 999px;
+  background: var(--bg); overflow: hidden; margin-top: 10px;
+}
+.progress-fill {
+  height: 100%; border-radius: 999px;
+  background: var(--primary);
+}
 
-  /* ---------- TRUST ---------- */
-  .trust-grid{
-    display:grid;
-    grid-template-columns:0.9fr 1.1fr;
-    gap:64px;
-    align-items:center;
-  }
-  .trust-visual{
-    background:var(--ink-soft);
-    border:1px solid var(--line-light);
-    border-radius:var(--radius-l);
-    padding:30px;
-  }
-  .escrow-row{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 0;
-    border-bottom:1px solid var(--line-light);
-    font-size:14.5px;
-  }
-  .escrow-row:last-child{border-bottom:none;}
-  .escrow-status{
-    font-size:12px;
-    font-weight:600;
-    padding:5px 12px;
-    border-radius:999px;
-  }
-  .status-hold{background:rgba(255,255,255,0.08);color:var(--text-light-dim);}
-  .status-active{background:rgba(0,184,141,0.15);color:var(--teal);}
-  .status-done{background:rgba(106,92,255,0.18);color:#b3a9ff;}
-  .trust-list{display:flex;flex-direction:column;gap:26px;}
-  .trust-item h4{font-size:18px;font-weight:600;}
-  .trust-item p{margin-top:8px;font-size:14.5px;line-height:1.6;color:var(--text-light-dim);}
-  @media (max-width:900px){
-    .trust-grid{grid-template-columns:1fr;gap:36px;}
-  }
+/* ===== SECTION TITLE ===== */
+.section-eyebrow {
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--primary); margin-bottom: 6px;
+}
+.section-title {
+  font-size: 26px; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--ink);
+}
 
-  /* ---------- MODEL / FEE BAND ---------- */
-  .fee-band{
-    background:var(--paper);
-    color:var(--text-dark);
-  }
-  .fee-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-  }
-  .fee-card{
-    background:#fff;
-    border:1px solid var(--line-dark);
-    border-radius:var(--radius-m);
-    padding:30px;
-  }
-  .fee-card h3{font-size:20px;font-weight:600;}
-  .fee-pct{
-    font-family:'Space Grotesk',sans-serif;
-    font-weight:700;
-    font-size:40px;
-    color:var(--violet-dim);
-    margin-top:14px;
-  }
-  .fee-card p{margin-top:10px;font-size:14.5px;line-height:1.55;color:var(--text-dark-dim);}
-  @media (max-width:760px){
-    .fee-grid{grid-template-columns:1fr;}
-  }
+/* ===== AVATAR ===== */
+.avatar-letter {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800; color: #fff; flex-shrink: 0;
+}
+.avatar-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  object-fit: cover; flex-shrink: 0;
+}
 
-  /* ---------- CTA / WAITLIST ---------- */
-  .cta-section{
-    text-align:center;
-  }
-  .cta-section h2{
-    font-size:clamp(32px,4.4vw,50px);
-    max-width:720px;
-    margin:0 auto;
-  }
-  .cta-section p{
-    margin:18px auto 0;
-    max-width:52ch;
-    color:var(--text-light-dim);
-    font-size:16.5px;
-  }
-  .waitlist{
-    margin:36px auto 0;
-    display:flex;
-    gap:10px;
-    max-width:440px;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-  .waitlist input{
-    flex:1;
-    min-width:220px;
-    padding:14px 18px;
-    border-radius:999px;
-    border:1px solid var(--line-light);
-    background:var(--ink-soft);
-    color:var(--text-light);
-    font-family:'Inter',sans-serif;
-    font-size:15px;
-  }
-  .waitlist input:focus{outline:2px solid var(--teal);outline-offset:2px;}
-  .waitlist-msg{
-    margin-top:16px;
-    font-size:14px;
-    color:var(--teal);
-    min-height:20px;
-  }
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
 
-  /* ---------- FOOTER ---------- */
-  footer{
-    border-top:1px solid var(--line-light);
-    padding:44px 0;
-  }
-  .foot-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:16px;
-    font-size:13.5px;
-    color:var(--text-light-dim);
-  }
-
-  :focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{transition:none !important;}
-  }
+@media (max-width: 768px) {
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  .nav-tagline { display: none; }
+}
+@media (max-width: 480px) {
+  .stat-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="wrap nav-inner">
-    <div class="logo"><span>Kawan</span><span>Konten</span></div>
-    <div class="nav-links">
-      <a href="#fitur">Fitur</a>
-      <a href="#coba">Coba Matching</a>
-      <a href="#cara-kerja">Cara Kerja</a>
-      <a href="#kepercayaan">Keamanan</a>
+<!-- ========================================================
+     PAGE 1: ROLE SELECTION
+     ======================================================== -->
+<div id="page-role" class="page active">
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/>
+            <path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/>
+            <circle cx="17" cy="7" r="2" fill="#00C896"/>
+          </svg>
+        </div>
+        <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+      </div>
+      <span class="nav-tagline">Kolaborasi yang tepat dimulai dari sini.</span>
     </div>
-    <div class="nav-cta">
-      <a href="#cta" class="btn btn-ghost">Masuk</a>
-      <a href="#cta" class="btn btn-primary">Gabung Gratis</a>
+  </nav>
+
+  <div style="min-height: calc(100vh - 64px); background: linear-gradient(160deg, #EEF0FF 0%, #F0F2F8 50%, #E8F5F1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px;">
+    <div style="text-align: center; max-width: 680px; width: 100%;">
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 8px 18px; font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 28px;">
+        <span>✦</span> Selamat Datang di KawanKonten
+      </div>
+      <h1 style="font-size: clamp(36px, 6vw, 60px); font-weight: 800; letter-spacing: -0.03em; color: var(--ink); line-height: 1.08; margin-bottom: 16px;">
+        Kamu datang sebagai <span style="background: #E5E7EB; border-radius: 8px; padding: 0 8px;">siapa?</span>
+      </h1>
+      <p style="font-size: 16px; color: var(--ink-3); margin-bottom: 48px; line-height: 1.6;">
+        Pilih peranmu supaya kami bisa menyiapkan pengalaman, rekomendasi, dan fitur yang paling sesuai.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 680px; margin: 0 auto;">
+        <!-- Brand Card -->
+        <button onclick="goTo('brand-dashboard')" style="background: none; border: none; text-align: left; cursor: pointer;">
+          <div style="border-radius: 24px; overflow: hidden; position: relative; min-height: 280px; background: #1a1a2e; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; transition: transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 48px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="position: absolute; inset: 0; background: linear-gradient(160deg, rgba(30,30,60,0.7) 0%, rgba(10,10,30,0.95) 100%); border-radius: 24px;"></div>
+            <div style="position: absolute; top: 28px; left: 28px; width: 44px; height: 44px; background: rgba(255,255,255,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4" height="9" rx="1" fill="white"/><rect x="10" y="7" width="4" height="14" rx="1" fill="white"/><rect x="17" y="3" width="4" height="18" rx="1" fill="white"/></svg>
+            </div>
+            <div style="position: relative; z-index: 1;">
+              <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-bottom: 10px;">Saya Sebuah Brand</p>
+              <h2 style="font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em;">Cari creator yang tepat</h2>
+              <p style="font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; margin-bottom: 24px;">Temukan talent, bandingkan media kit, dan mulai campaign sesuai target dan budgetmu.</p>
+              <div style="display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 999px;">
+                Masuk sebagai Brand →
+              </div>
+            </div>
+          </div>
+        </button>
+
+        <!-- Creator Card -->
+        <button onclick="goTo('creator-dashboard')" style="background: none; border: none; text-align: left; cursor: pointer;">
+          <div style="border-radius: 24px; overflow: hidden; position: relative; min-height: 280px; background: linear-gradient(160deg, #6C63FF 0%, #4F46E5 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; transition: transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 48px rgba(91,79,232,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="position: absolute; inset: 0; background: linear-gradient(160deg, rgba(108,99,255,0.3) 0%, rgba(79,70,229,0.9) 100%); border-radius: 24px;"></div>
+            <div style="position: absolute; top: 28px; left: 28px; width: 44px; height: 44px; background: rgba(255,255,255,0.18); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" fill="white"/><rect x="13" y="3" width="8" height="8" rx="2" fill="white" fill-opacity="0.6"/><rect x="3" y="13" width="8" height="8" rx="2" fill="white" fill-opacity="0.6"/><circle cx="17" cy="17" r="4" fill="white"/></svg>
+            </div>
+            <div style="position: relative; z-index: 1;">
+              <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.75); margin-bottom: 10px;">Saya Seorang Creator</p>
+              <h2 style="font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em;">Tumbuhkan karier kreatifmu</h2>
+              <p style="font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.5; margin-bottom: 24px;">Tampilkan karya terbaik, atur rate card, dan dapatkan kolaborasi dari brand impianmu.</p>
+              <div style="display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--primary); font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 999px;">
+                Masuk sebagai Creator →
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <p style="margin-top: 28px; font-size: 13px; color: var(--ink-4);">Tenang, kamu bisa mengganti peran kapan saja nanti.</p>
     </div>
   </div>
-</nav>
+</div>
 
-<header class="hero">
-  <div class="blob"></div>
-  <div class="wrap hero-grid">
-    <div>
-      <p class="eyebrow">Untuk kreator baru &amp; brand dengan budget terbatas</p>
-      <h1 style="margin-top:14px;">Kolaborasi kreator dan brand, <em>tanpa drama.</em></h1>
-      <p class="hero-sub">KawanKonten menghubungkan micro-influencer yang baru merintis karier dengan brand yang butuh promosi hemat — lengkap dengan media kit otomatis, rekomendasi rate card, dan pembayaran yang aman untuk dua belah pihak.</p>
-      <div class="hero-ctas">
-        <a href="#cta" class="btn btn-primary">Saya Kreator, mau dapat project</a>
-        <a href="#cta" class="btn btn-ghost">Saya Brand, mau cari kreator</a>
+<!-- ========================================================
+     PAGE 2: BRAND DASHBOARD
+     ======================================================== -->
+<div id="page-brand-dashboard" class="page">
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+        </div>
+        <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
       </div>
-      <p class="hero-note"><strong>4.4 / 5</strong> minat platform dari riset awal ke 5 content creator independen</p>
-    </div>
-
-    <div class="kit-stage">
-      <div class="kit-card main">
-        <div class="kit-top">
-          <div class="kit-avatar">RA</div>
-          <div>
-            <div class="kit-name">Rani Anindita</div>
-            <div class="kit-handle">@raniandtales · 24.500 pengikut</div>
-          </div>
-        </div>
-        <div class="kit-tags">
-          <span class="kit-tag">Kecantikan</span>
-          <span class="kit-tag">Gaya Hidup</span>
-        </div>
-        <div class="kit-stats">
-          <div>
-            <div class="kit-stat-label">Engagement rate</div>
-            <div class="kit-stat-value">6.8%</div>
-          </div>
-          <div>
-            <div class="kit-stat-label">Rating dari brand</div>
-            <div class="kit-stat-value">4.9 ★</div>
-          </div>
-        </div>
-        <div class="kit-rate">
-          <div class="kit-rate-label">Rate card rekomendasi · 1 konten Reels</div>
-          <div class="kit-rate-value">Rp 850.000 – 1.200.000</div>
-        </div>
+      <div class="nav-links">
+        <a href="#" class="active" onclick="goTo('brand-dashboard');return false;">Dashboard</a>
+        <a href="#" onclick="goTo('explore');return false;">Find Creators</a>
       </div>
-
-      <div class="offer-card">
-        <div class="offer-top">
-          <span class="offer-dot"></span>
-          <span class="offer-brand">Tawaran dari Kopi Rakyat</span>
-        </div>
-        <p class="offer-body">Cocok dengan kategori & audiens kamu — 1 posting feed + 2 story, budget Rp 900rb.</p>
-        <div class="offer-cta">
-          <span class="accept">Terima</span>
-          <span class="decline">Lihat detail</span>
-        </div>
+      <div class="nav-right">
+        <button class="mode-pill" onclick="goTo('role')">
+          <span class="mode-dot"></span> Brand Mode
+        </button>
       </div>
     </div>
-  </div>
-</header>
+  </nav>
 
-<div class="stats-band">
-  <div class="wrap">
-    <div class="stats-head">
-      <h2>Kami mulai dari mendengarkan kreator, bukan menebak.</h2>
-      <p>Data ini berasal dari survei awal ke content creator independen sebelum KawanKonten dibangun.</p>
+  <div class="wrap" style="padding-top: 36px; padding-bottom: 48px;">
+    <!-- Header -->
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <p class="section-eyebrow">Brand Workspace</p>
+        <h1 style="font-size: clamp(28px, 4vw, 38px); font-weight: 800; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 8px;">Selamat pagi, Lumera Beauty.</h1>
+        <p style="font-size: 14px; color: var(--ink-3);">Ada 18 creator baru yang cocok dengan campaign kamu hari ini.</p>
+      </div>
+      <button class="btn btn-primary btn-lg" onclick="goTo('explore')">Cari Creator →</button>
     </div>
-    <div class="stats-row">
-      <div class="stat-cell">
-        <div class="stat-num">80%</div>
-        <div class="stat-label">pernah kesulitan mendapat kerja sama dengan brand</div>
+
+    <!-- Stat Cards -->
+    <div class="stat-grid">
+      <div class="stat-card" onclick="openModal('modal-campaign-aktif')">
+        <div class="stat-icon violet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" fill="#5B4FE8"/><rect x="13" y="3" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/><rect x="3" y="13" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/></svg>
+        </div>
+        <div class="stat-num">04</div>
+        <div class="stat-label">Campaign Aktif</div>
+        <div class="stat-sub">+1 bulan ini</div>
       </div>
-      <div class="stat-cell">
-        <div class="stat-num">80%</div>
-        <div class="stat-label">merasa jumlah pengikut menentukan peluang project</div>
+      <div class="stat-card" onclick="openModal('modal-creator-terhubung')">
+        <div class="stat-icon blue">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" fill="#3B82F6"/><circle cx="15" cy="7" r="3" fill="#3B82F6" fill-opacity="0.5"/><path d="M3 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/><path d="M15 13c2.21 0 4 1.79 4 4v2" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" fill-opacity="0.5"/></svg>
+        </div>
+        <div class="stat-num">28</div>
+        <div class="stat-label">Creator Terhubung</div>
+        <div class="stat-sub">+6 bulan ini</div>
       </div>
-      <div class="stat-cell">
-        <div class="stat-num">#1</div>
-        <div class="stat-label">kebutuhan tertinggi: tempat mencari project yang sesuai</div>
+      <div class="stat-card" onclick="openModal('modal-konten-selesai-brand')">
+        <div class="stat-icon green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#00C896" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#00C896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="stat-num">116</div>
+        <div class="stat-label">Konten Selesai</div>
+        <div class="stat-sub">92% tepat waktu</div>
       </div>
-      <div class="stat-cell">
-        <div class="stat-num">4.4/5</div>
-        <div class="stat-label">rata-rata ketertarikan terhadap platform micro-influencer</div>
+      <div class="stat-card" onclick="openModal('modal-rating-brand')">
+        <div class="stat-icon yellow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F6A623"/></svg>
+        </div>
+        <div class="stat-num">4.9</div>
+        <div class="stat-label">Rata-rata Rating</div>
+        <div class="stat-sub">dari 86 kolaborasi</div>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: start;">
+      <!-- Smart Matching -->
+      <div class="card" style="padding: 28px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+          <div>
+            <p class="section-eyebrow">Smart Matching</p>
+            <h2 class="section-title">Creator pilihan untukmu</h2>
+          </div>
+          <button class="btn-ghost btn" onclick="goTo('explore')">Lihat semua</button>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" id="brand-creator-grid">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Campaign Card -->
+      <div style="background: #0D1B2A; border-radius: var(--radius-l); padding: 24px; color: #fff;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+          <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.5);">Campaign</p>
+          <span class="badge badge-green">Active</span>
+        </div>
+        <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 6px;">Glow Up Ramadan</h3>
+        <p style="font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 20px;">UGC skincare campaign · 12 creators</p>
+
+        <div style="margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px;">
+            <span>Campaign progress</span><span style="color:#fff; font-weight:700;">68%</span>
+          </div>
+          <div style="height: 6px; border-radius: 999px; background: rgba(255,255,255,0.12);">
+            <div style="height: 100%; width: 68%; border-radius: 999px; background: var(--green);"></div>
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; justify-content: space-between; font-size: 13px;">
+            <span style="color: rgba(255,255,255,0.55);">Brief diterima</span>
+            <span style="font-weight: 700;">12/12</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 13px;">
+            <span style="color: rgba(255,255,255,0.55);">Konten terkirim</span>
+            <span style="font-weight: 700;">8/12</span>
+          </div>
+        </div>
+
+        <button class="btn btn-outline btn-sm" style="width: 100%; margin-top: 20px; color: #fff; border-color: rgba(255,255,255,0.2);" onclick="goTo('kelola-campaign')">
+          Kelola Campaign →
+        </button>
       </div>
     </div>
   </div>
 </div>
 
-<section id="fitur">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Fitur inti</p>
-      <h2>Semua yang dibutuhkan dua belah pihak, dalam satu alur.</h2>
-      <p>Dirancang langsung dari fitur yang paling diminta dalam riset: pencarian project, rekomendasi rate, portofolio, dan transaksi aman.</p>
+<!-- ========================================================
+     PAGE 3: CREATOR DASHBOARD
+     ======================================================== -->
+<div id="page-creator-dashboard" class="page">
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+        </div>
+        <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="active" onclick="goTo('creator-dashboard');return false;">Dashboard</a>
+        <a href="#" onclick="goTo('media-kit');return false;">My Media Kit</a>
+        <a href="#" onclick="goTo('explore');return false;">Jelajahi</a>
+      </div>
+      <div class="nav-right">
+        <button class="mode-pill" onclick="goTo('role')">
+          <span class="mode-dot"></span> Creator Mode
+        </button>
+      </div>
     </div>
+  </nav>
 
-    <div class="bento">
-      <div class="feat feat-lg">
+  <!-- Hero Banner -->
+  <div style="background: linear-gradient(135deg, #0D1B2A 0%, #1E1B4B 100%); color: #fff; padding: 32px 0;">
+    <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="position: relative;">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Nadya" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(255,255,255,0.3);">
+          <div style="position: absolute; bottom: 2px; right: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--green); border: 2px solid #0D1B2A;"></div>
+        </div>
         <div>
-          <div class="feat-index">Fitur utama</div>
-          <h3 style="margin-top:14px;">Smart Matching</h3>
-          <p>Brand mengunggah brief campaign dan budget, kreator mengatur kategori dan minat mereka — sistem mempertemukan keduanya secara otomatis, bukan lewat DM acak atau agency perantara.</p>
+          <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); margin-bottom: 4px;">Creator Workspace</p>
+          <h1 style="font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px;">Halo, Nadya!</h1>
+          <p style="font-size: 13px; color: rgba(255,255,255,0.6);">Karyamu dilihat 12 brand minggu ini.</p>
         </div>
-        <a href="#coba" class="feat-link">Coba simulasinya di bawah →</a>
       </div>
-
-      <div class="feat feat-md">
-        <div class="feat-index">02</div>
-        <h3 style="margin-top:10px;">Dynamic Media Kit &amp; Rate Card</h3>
-        <p>Portofolio profesional dibuat otomatis dari data profil, lengkap dengan rekomendasi harga berdasarkan jumlah pengikut dan engagement — kreator baru tak perlu menebak-nebak tarif sendiri.</p>
-      </div>
-
-      <div class="feat feat-md">
-        <div class="feat-index">03</div>
-        <h3 style="margin-top:10px;">Rating &amp; Ulasan Endorsement</h3>
-        <p>Setiap project selesai meninggalkan jejak rating dua arah, jadi brand baru dan kreator baru sama-sama punya rekam jejak yang bisa dipercaya sejak kolaborasi pertama.</p>
-      </div>
-
-      <div class="feat feat-sm">
-        <div class="feat-index">04</div>
-        <h3 style="margin-top:10px;">Pembayaran Aman</h3>
-        <p>Dana ditahan platform sampai konten selesai dan disetujui, mengurangi risiko pembayaran telat atau penipuan.</p>
-      </div>
-
-      <div class="feat feat-sm">
-        <div class="feat-index">05</div>
-        <h3 style="margin-top:10px;">Filter Kategori</h3>
-        <p>Brand menyaring kreator berdasarkan niche, kota, dan rentang budget dalam beberapa klik.</p>
-      </div>
-
-      <div class="feat feat-sm">
-        <div class="feat-index">06</div>
-        <h3 style="margin-top:10px;">Biaya Transparan</h3>
-        <p>Struktur platform fee dan commission fee ditampilkan di muka, tanpa biaya tersembunyi.</p>
-      </div>
+      <button class="btn" style="background: #fff; color: var(--ink); border-radius: 999px;" onclick="goTo('media-kit')">Lihat Media Kit</button>
     </div>
   </div>
-</section>
 
-<section id="coba" class="light" style="background:var(--ink);">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Coba langsung</p>
-      <h2>Simulasi Smart Matching</h2>
-      <p>Pilih kategori seperti yang akan dilakukan brand saat mencari kreator. Daftar di bawah adalah contoh profil kreator di platform.</p>
-    </div>
-
-    <div class="demo-panel">
-      <div class="chip-row" id="chipRow">
-        <button class="chip active" data-cat="Semua">Semua</button>
-        <button class="chip" data-cat="Kecantikan">Kecantikan</button>
-        <button class="chip" data-cat="Kuliner">Kuliner</button>
-        <button class="chip" data-cat="Gaming">Gaming</button>
-        <button class="chip" data-cat="Fesyen">Fesyen</button>
-        <button class="chip" data-cat="Teknologi">Teknologi</button>
-        <button class="chip" data-cat="Parenting">Parenting</button>
+  <div class="wrap" style="padding-top: 28px; padding-bottom: 48px;">
+    <!-- Stat Cards -->
+    <div class="stat-grid" style="margin-bottom: 28px;">
+      <div class="stat-card" onclick="openModal('modal-penghasilan')">
+        <div class="stat-icon green">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4" height="9" rx="1" fill="#00C896"/><rect x="10" y="7" width="4" height="14" rx="1" fill="#00C896"/><rect x="17" y="3" width="4" height="18" rx="1" fill="#00C896"/></svg>
+        </div>
+        <div class="stat-num" style="font-size: 22px;">Rp 8.4M</div>
+        <div class="stat-label">Penghasilan Bulan Ini</div>
+        <div class="stat-sub" style="color: var(--green);">+18% dari bulan lalu</div>
       </div>
-
-      <div class="creator-grid" id="creatorGrid"></div>
-    </div>
-  </div>
-</section>
-
-<section id="cara-kerja">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Cara kerja</p>
-      <h2>Empat langkah, dari dua sisi meja.</h2>
-    </div>
-
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="kreator">Untuk Kreator</button>
-      <button class="tab-btn" data-tab="brand">Untuk Brand</button>
-    </div>
-
-    <div class="steps active" id="steps-kreator">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h4>Buat profil &amp; media kit</h4>
-        <p>Isi kategori konten dan data akun sekali — media kit dan rate card tersusun otomatis.</p>
+      <div class="stat-card" onclick="openModal('modal-campaign-aktif-creator')">
+        <div class="stat-icon violet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" fill="#5B4FE8"/><rect x="13" y="3" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/><rect x="3" y="13" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/></svg>
+        </div>
+        <div class="stat-num">03</div>
+        <div class="stat-label">Campaign Aktif</div>
+        <div class="stat-sub">2 menunggu konten</div>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h4>Atur ketersediaan</h4>
-        <p>Tentukan jenis kolaborasi dan rentang harga yang kamu terima.</p>
+      <div class="stat-card" onclick="openModal('modal-profile-views')">
+        <div class="stat-icon blue">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" fill="#3B82F6"/><circle cx="15" cy="7" r="3" fill="#3B82F6" fill-opacity="0.5"/><path d="M3 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="stat-num">1.2K</div>
+        <div class="stat-label">Profile Views</div>
+        <div class="stat-sub">+164 minggu ini</div>
       </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h4>Terima tawaran yang cocok</h4>
-        <p>Sistem mencocokkan brief brand dengan kategori dan audiensmu.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h4>Selesaikan &amp; dibayar aman</h4>
-        <p>Dana cair setelah konten disetujui, rating tersimpan di profilmu.</p>
+      <div class="stat-card" onclick="openModal('modal-rating-creator')">
+        <div class="stat-icon yellow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F6A623"/></svg>
+        </div>
+        <div class="stat-num">4.9</div>
+        <div class="stat-label">Rating Creator</div>
+        <div class="stat-sub">86 ulasan brand</div>
       </div>
     </div>
 
-    <div class="steps" id="steps-brand">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h4>Posting kebutuhan campaign</h4>
-        <p>Tulis brief singkat, target audiens, dan budget yang tersedia.</p>
+    <!-- Main Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start;">
+      <!-- Peluang Terbaru -->
+      <div class="card" style="padding: 28px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <div>
+            <p class="section-eyebrow">Peluang Terbaru</p>
+            <h2 class="section-title">Campaign yang cocok untukmu</h2>
+          </div>
+          <button class="btn-ghost btn" onclick="goTo('explore')">Lihat semua</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;" id="creator-peluang-list">
+          <!-- filled by JS -->
+        </div>
       </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h4>Dapat rekomendasi kreator</h4>
-        <p>Lihat daftar kreator yang cocok lengkap dengan media kit dan rate card.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h4>Diskusikan lewat platform</h4>
-        <p>Sepakati detail konten dan jadwal tanpa pindah ke chat pribadi.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">04</div>
-        <h4>Bayar setelah konten jadi</h4>
-        <p>Dana baru diteruskan ke kreator setelah kamu menyetujui hasilnya.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="kepercayaan">
-  <div class="wrap trust-grid">
-    <div class="trust-visual">
-      <div class="escrow-row">
-        <span>Brief disepakati</span>
-        <span class="escrow-status status-hold">Dana ditahan</span>
-      </div>
-      <div class="escrow-row">
-        <span>Konten sedang dikerjakan</span>
-        <span class="escrow-status status-active">Berlangsung</span>
-      </div>
-      <div class="escrow-row">
-        <span>Konten disetujui brand</span>
-        <span class="escrow-status status-done">Dana cair</span>
-      </div>
-    </div>
+      <!-- Profile Strength -->
+      <div class="card" style="padding: 24px;">
+        <p class="section-eyebrow" style="margin-bottom: 8px;">Profile Strength</p>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <h3 style="font-size: 24px; font-weight: 800; color: var(--ink);">85% lengkap</h3>
+          <div style="position: relative; width: 56px; height: 56px;">
+            <svg viewBox="0 0 56 56" width="56" height="56">
+              <circle cx="28" cy="28" r="24" fill="none" stroke="#E5E7EB" stroke-width="5"/>
+              <circle cx="28" cy="28" r="24" fill="none" stroke="var(--primary)" stroke-width="5"
+                stroke-dasharray="150.8" stroke-dashoffset="22.6"
+                stroke-linecap="round" transform="rotate(-90 28 28)"/>
+            </svg>
+            <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--primary);">85%</span>
+          </div>
+        </div>
+        <p style="font-size: 12px; color: var(--ink-3); margin-bottom: 20px; line-height: 1.5;">Tambah 2 portfolio terbaru untuk meningkatkan peluang ditemukan brand.</p>
+        <button class="btn btn-outline btn-sm" style="width:100%;" onclick="goTo('media-kit')">Lengkapi Profil</button>
 
-    <div class="trust-list">
-      <p class="eyebrow">Keamanan transaksi</p>
-      <div class="trust-item">
-        <h4>Dana ditahan sampai konten disetujui</h4>
-        <p>Mekanisme seperti escrow ini melindungi brand dari konten yang tak sesuai, dan melindungi kreator dari pembayaran yang tak kunjung datang.</p>
-      </div>
-      <div class="trust-item">
-        <h4>Rekam jejak dua arah</h4>
-        <p>Rating dan ulasan dari setiap kolaborasi membangun kepercayaan bertahap, bahkan untuk kreator dan brand yang baru mulai.</p>
-      </div>
-      <div class="trust-item">
-        <h4>Bukan sekadar mengejar jumlah pengikut</h4>
-        <p>Rekomendasi kreator memperhitungkan kecocokan kategori dan engagement, bukan cuma besar-kecilnya angka followers.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="fee-band">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">Model bisnis</p>
-      <h2>Gratis untuk mulai, adil untuk semua.</h2>
-      <p>Platform berjalan dari dua sumber pendapatan sederhana — bukan dari langganan bulanan yang memberatkan kreator baru.</p>
-    </div>
-    <div class="fee-grid">
-      <div class="fee-card">
-        <h3>Platform fee</h3>
-        <div class="fee-pct">Kecil, tetap</div>
-        <p>Dikenakan per transaksi yang berhasil, untuk menjaga media kit, sistem matching, dan penahanan dana tetap berjalan.</p>
-      </div>
-      <div class="fee-card">
-        <h3>Commission fee</h3>
-        <div class="fee-pct">Persentase project</div>
-        <p>Dipotong dari nilai kolaborasi yang selesai — platform hanya untung ketika kreator dan brand juga mendapat hasil.</p>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+          <p style="font-size: 12px; font-weight: 700; color: var(--ink-2); margin-bottom: 12px;">Yang perlu dilengkapi:</p>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3);">
+              <span style="width:18px;height:18px;border-radius:50%;background:var(--yellow-light);color:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;">!</span>
+              Tambah 2 video portfolio
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-3);">
+              <span style="width:18px;height:18px;border-radius:50%;background:var(--yellow-light);color:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;">!</span>
+              Hubungkan akun TikTok
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--green);">
+              <span style="width:18px;height:18px;border-radius:50%;background:var(--green-light);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;">✓</span>
+              Rate card sudah diisi
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<section id="cta" class="cta-section">
-  <div class="wrap">
-    <p class="eyebrow">Mulai sekarang</p>
-    <h2 style="margin-top:14px;">Jadi kreator yang gampang ditemukan brand, atau brand yang gampang menemukan kreator yang tepat.</h2>
-    <p>Daftar di waitlist untuk jadi salah satu pengguna pertama KawanKonten.</p>
-    <form class="waitlist" id="waitlistForm">
-      <input type="email" id="waitlistEmail" placeholder="Alamat email kamu" required>
-      <button type="submit" class="btn btn-primary">Gabung Waitlist</button>
-    </form>
-    <div class="waitlist-msg" id="waitlistMsg"></div>
-  </div>
-</section>
+<!-- ========================================================
+     PAGE 4: MEDIA KIT / PROFIL CREATOR
+     ======================================================== -->
+<div id="page-media-kit" class="page">
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+        </div>
+        <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#" onclick="goTo('creator-dashboard');return false;">Dashboard</a>
+        <a href="#" class="active" onclick="goTo('media-kit');return false;">My Media Kit</a>
+        <a href="#" onclick="goTo('explore');return false;">Jelajahi</a>
+      </div>
+      <div class="nav-right">
+        <button class="mode-pill" onclick="goTo('role')">
+          <span class="mode-dot"></span> Creator Mode
+        </button>
+      </div>
+    </div>
+  </nav>
 
-<footer>
-  <div class="wrap foot-row">
-    <div class="logo" style="font-size:17px;"><span>Kawan</span><span>Konten</span></div>
-    <div>Menghubungkan micro-influencer dan brand kecil — dimulai dari Indonesia.</div>
+  <!-- Cover Banner -->
+  <div style="height: 220px; background: linear-gradient(120deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden;">
+    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200&h=220&fit=crop" alt="cover" style="width:100%;height:100%;object-fit:cover;opacity:0.5;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3) 100%);"></div>
   </div>
-</footer>
+
+  <div class="wrap" style="padding-bottom: 48px;">
+    <!-- Profile Row -->
+    <div style="display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; margin-top: -60px;">
+      <!-- Left: Profile Info -->
+      <div>
+        <div class="card" style="padding: 28px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 20px;">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Nadya" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+            <button class="btn btn-outline btn-sm">Edit Profil</button>
+          </div>
+          <h2 style="font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 4px;">Nadya Putri</h2>
+          <p style="font-size: 13px; color: var(--ink-3); margin-bottom: 14px;">@nadyaputri · Jakarta, ID</p>
+          <p style="font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-bottom: 16px;">Beauty storyteller who turns everyday rituals into warm, honest content. I help conscious brands connect with Gen Z through scroll-stopping tutorials and relatable reviews.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span style="background: var(--bg); color: var(--ink-2); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;">Skincare</span>
+            <span style="background: var(--bg); color: var(--ink-2); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;">UGC Video</span>
+            <span style="background: var(--bg); color: var(--ink-2); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;">Product Review</span>
+            <span style="background: var(--bg); color: var(--ink-2); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;">GRWM</span>
+            <span style="background: var(--bg); color: var(--ink-2); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;">Short-form</span>
+          </div>
+        </div>
+
+        <!-- Live Social Insights -->
+        <div class="card" style="padding: 28px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <div>
+              <p class="section-eyebrow">Live Social Insights</p>
+              <h3 class="section-title" style="font-size: 20px;">Connected accounts</h3>
+            </div>
+            <button class="btn btn-outline btn-sm">Edit Insight</button>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+            <div class="card" style="padding: 20px; border: 1.5px solid var(--border);">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="5" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="white"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;">Instagram</div>
+                    <div style="font-size:12px;color:var(--ink-3);">@nadyaputri</div>
+                  </div>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--green);"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div><div style="font-size:18px;font-weight:800;">48.2K</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Followers</div></div>
+                <div><div style="font-size:18px;font-weight:800;">5.8%</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Engagement</div></div>
+              </div>
+            </div>
+            <div class="card" style="padding: 20px; border: 1.5px solid var(--border);">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <div style="width:40px;height:40px;border-radius:12px;background:#010101;display:flex;align-items:center;justify-content:center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.16 8.16 0 0 0 4.77 1.52V6.76a4.85 4.85 0 0 1-1-.07z"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-size:14px;font-weight:700;">TikTok</div>
+                    <div style="font-size:12px;color:var(--ink-3);">@nadyacreates</div>
+                  </div>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--green);"></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div><div style="font-size:18px;font-weight:800;">86.4K</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Followers</div></div>
+                <div><div style="font-size:18px;font-weight:800;">7.2%</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Engagement</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Portfolio -->
+        <div class="card" style="padding: 28px; margin-bottom: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <div>
+              <p class="section-eyebrow">Selected Work</p>
+              <h3 class="section-title" style="font-size: 20px;">Video portfolio</h3>
+            </div>
+            <button class="btn btn-outline btn-sm">+ Tambah Karya</button>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;">
+            <div style="position: relative; border-radius: var(--radius-m); overflow: hidden; aspect-ratio: 9/14; background: #222;">
+              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=200&h=300&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.8;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#0D1B2A"/></svg></div></div>
+              <div style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.6);color:#fff;font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;">182K views</div>
+              <button style="position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,0.5);border:none;color:#fff;font-size:14px;cursor:pointer;">×</button>
+            </div>
+            <div style="position: relative; border-radius: var(--radius-m); overflow: hidden; aspect-ratio: 9/14; background: #222;">
+              <img src="https://images.unsplash.com/photo-1589156229687-496a31ad1d1f?w=200&h=300&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.8;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#0D1B2A"/></svg></div></div>
+              <div style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.6);color:#fff;font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;">96K views</div>
+              <button style="position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,0.5);border:none;color:#fff;font-size:14px;cursor:pointer;">×</button>
+            </div>
+            <div style="position: relative; border-radius: var(--radius-m); overflow: hidden; aspect-ratio: 9/14; background: #222;">
+              <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=200&h=300&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.8;">
+              <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;"><div style="width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 3l14 9-14 9V3z" fill="#0D1B2A"/></svg></div></div>
+              <div style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.6);color:#fff;font-size:11px;font-weight:700;padding:4px 8px;border-radius:999px;">71K views</div>
+              <button style="position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,0.5);border:none;color:#fff;font-size:14px;cursor:pointer;">×</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand Reviews -->
+        <div class="card" style="padding: 28px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <div>
+              <p class="section-eyebrow">Verified Feedback</p>
+              <h3 class="section-title" style="font-size: 20px;">Brand reviews</h3>
+            </div>
+            <div style="text-align:right;">
+              <span style="font-size:28px;font-weight:800;color:var(--ink);">4.9</span>
+              <span style="color:var(--yellow);font-size:16px;margin-left:6px;">★★★★★</span>
+              <p style="font-size:12px;color:var(--ink-3);">from 86 campaigns</p>
+            </div>
+          </div>
+          <div class="card" style="padding: 20px; border: 1.5px solid var(--border);">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+              <div class="avatar-letter" style="background: #FECACA; color: #DC2626; width:40px; height:40px; font-size:14px; border-radius:10px;">L</div>
+              <div>
+                <div style="font-size:14px;font-weight:700;">Lumera Beauty</div>
+                <div style="font-size:12px;color:var(--ink-3);">Verified campaign · 2 weeks ago</div>
+              </div>
+              <div style="margin-left:auto;color:var(--yellow);">★★★★★</div>
+            </div>
+            <p style="font-size:14px;color:var(--ink-2);line-height:1.6;margin-bottom:12px;">"Nadya completely understood the brief and made the product feel natural in her routine. Great communication and the final content outperformed our benchmark."</p>
+            <div style="display:flex;gap:8px;">
+              <span style="background:var(--green-light);color:#059669;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;">On-time delivery</span>
+              <span style="background:var(--green-light);color:#059669;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;">Clean content quality</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Private Insight -->
+      <div style="position: sticky; top: 88px;">
+        <div style="background: linear-gradient(135deg, var(--primary) 0%, #818CF8 100%); border-radius: var(--radius-l); padding: 24px; color: #fff; margin-top: 24px; margin-bottom: 16px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+            <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.7);">Private Creator Insight</p>
+            <span style="font-size:18px;">✦</span>
+          </div>
+          <h3 style="font-size:20px;font-weight:800;margin-bottom:8px;">Rekomendasi Harga</h3>
+          <p style="font-size:12px;color:rgba(255,255,255,0.7);line-height:1.5;">Hanya kamu yang bisa melihat rekomendasi ini. Harga final tetap didiskusikan dengan brand.</p>
+        </div>
+        <div class="card" style="padding: 24px; margin-bottom: 16px;">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-3);margin-bottom:8px;">Rekomendasi per Video</p>
+          <p style="font-size:26px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;margin-bottom:4px;">Rp 1.1M – Rp 1.6M</p>
+          <p style="font-size:12px;color:var(--ink-3);">berdasarkan 134.6K total followers</p>
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:12px;border-top:1px solid var(--border);padding-top:16px;">
+            <div style="display:flex;justify-content:space-between;font-size:13px;">
+              <span style="color:var(--ink-3);">Audience size</span>
+              <span style="font-weight:700;color:var(--green);">Strong</span>
+            </div>
+            <div style="font-size:20px;font-weight:800;color:var(--ink);">134.6K</div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;">
+              <span style="color:var(--ink-3);">Avg. engagement</span>
+              <span style="font-weight:700;color:var(--green);">Above avg.</span>
+            </div>
+            <div style="font-size:20px;font-weight:800;color:var(--ink);">6.5%</div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;">
+              <span style="color:var(--ink-3);">Rating keseluruhan</span>
+              <span style="font-weight:700;color:var(--green);">Excellent</span>
+            </div>
+            <div style="font-size:20px;font-weight:800;color:var(--ink);">4.9 / 5.0</div>
+          </div>
+        </div>
+        <div class="card" style="padding: 20px; border-left: 4px solid var(--yellow);">
+          <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--yellow);margin-bottom:6px;">Harga negosiasi</p>
+          <p style="font-size:13px;color:var(--ink-2);line-height:1.5;">Brand bisa menawar harga, tapi kamu tetap yang menentukan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================
+     PAGE 5: KELOLA CAMPAIGN (BRAND)
+     ======================================================== -->
+<div id="page-kelola-campaign" class="page">
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+        </div>
+        <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#" onclick="goTo('brand-dashboard');return false;">Dashboard</a>
+        <a href="#" onclick="goTo('explore');return false;">Find Creators</a>
+      </div>
+      <div class="nav-right">
+        <button class="mode-pill" onclick="goTo('role')">
+          <span class="mode-dot"></span> Brand Mode
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap" style="padding-top: 36px; padding-bottom: 48px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+      <button onclick="goTo('brand-dashboard')" style="width:36px;height:36px;border-radius:999px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--ink-3);">←</button>
+      <div>
+        <p class="section-eyebrow">Brand Workspace</p>
+        <h1 style="font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;">Kelola Campaign</h1>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div style="display:flex;gap:10px;margin-bottom:28px;">
+      <button class="chip-filter active" onclick="filterCampaign('Semua',this)">Semua</button>
+      <button class="chip-filter" onclick="filterCampaign('Aktif',this)">Aktif</button>
+      <button class="chip-filter" onclick="filterCampaign('Selesai',this)">Selesai</button>
+    </div>
+
+    <!-- Campaign List -->
+    <div id="campaign-list" style="display:flex;flex-direction:column;gap:16px;">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================
+     PAGE 6: JELAJAHI CREATOR & BRAND
+     ======================================================== -->
+<div id="page-explore" class="page">
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+        </div>
+        <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+      </div>
+      <div class="nav-links" id="explore-nav-links">
+        <a href="#" onclick="goTo('creator-dashboard');return false;">Dashboard</a>
+        <a href="#" onclick="goTo('media-kit');return false;">My Media Kit</a>
+        <a href="#" class="active" onclick="goTo('explore');return false;">Jelajahi</a>
+      </div>
+      <div class="nav-right">
+        <button class="mode-pill" id="explore-mode-pill" onclick="goTo('role')">
+          <span class="mode-dot"></span> <span id="explore-mode-label">Creator Mode</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap" style="padding-top: 36px; padding-bottom: 48px;">
+    <!-- Header -->
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:16px;">
+      <div>
+        <p class="section-eyebrow">✦ Jelajahi Semua</p>
+        <h1 style="font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px;">Jelajahi Creator & Brand</h1>
+        <p style="font-size:14px;color:var(--ink-3);">Temukan creator lain dan brand yang membuka peluang kolaborasi.</p>
+      </div>
+      <!-- Toggle Creator/Brand -->
+      <div style="display:flex;background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:4px;gap:4px;">
+        <button class="chip-filter active" id="tab-creator" onclick="switchExploreTab('creator')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="7" r="4" fill="currentColor"/><path d="M4 19c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          Creator
+        </button>
+        <button class="chip-filter" id="tab-brand" onclick="switchExploreTab('brand')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:4px;"><rect x="3" y="7" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 7V5a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg>
+          Brand
+        </button>
+      </div>
+    </div>
+
+    <!-- Search & Filter -->
+    <div style="margin-bottom:20px;">
+      <div style="position:relative;margin-bottom:14px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--ink-3);"><circle cx="11" cy="11" r="7" stroke="#6B7280" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="explore-search" type="text" placeholder="Cari nama, niche, atau keyword..." oninput="renderExplore()"
+          style="width:100%;padding:14px 16px 14px 44px;border:1.5px solid var(--border);border-radius:var(--radius-m);font-size:14px;font-family:inherit;background:#fff;color:var(--ink);outline:none;"
+          onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+        <select id="explore-niche" onchange="renderExplore()" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:999px;font-size:13px;font-weight:600;font-family:inherit;background:#fff;color:var(--ink-2);cursor:pointer;outline:none;">
+          <option value="">Semua Niche</option>
+          <option>Beauty & Skincare</option>
+          <option>F&B / Coffee</option>
+          <option>Fashion & Lifestyle</option>
+          <option>Tech & Productivity</option>
+          <option>Wellness & Fitness</option>
+          <option>Gaming & Tech</option>
+          <option>Food & Lifestyle</option>
+          <option>Fashion & Travel</option>
+        </select>
+        <select id="explore-followers" onchange="renderExplore()" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:999px;font-size:13px;font-weight:600;font-family:inherit;background:#fff;color:var(--ink-2);cursor:pointer;outline:none;" class="explore-creator-only">
+          <option value="">Ukuran Followers</option>
+          <option>Nano (1K–10K)</option>
+          <option>Micro (10K–100K)</option>
+          <option>Mid (100K–500K)</option>
+        </select>
+        <button class="btn btn-dark btn-sm">⊞ More Filters</button>
+      </div>
+    </div>
+
+    <!-- Sort Tabs (creator only) -->
+    <div id="sort-tabs" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:24px;justify-content:space-between;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="chip-filter active" onclick="setSort('Semua',this)">Semua</button>
+        <button class="chip-filter" onclick="setSort('Best Match',this)">Best Match</button>
+        <button class="chip-filter" onclick="setSort('Top Rated',this)">Top Rated</button>
+        <button class="chip-filter" onclick="setSort('Most Relevant',this)">Most Relevant</button>
+        <button class="chip-filter" onclick="setSort('Lowest Rate',this)">Lowest Rate</button>
+      </div>
+      <span id="explore-count" style="font-size:13px;color:var(--ink-3);font-weight:600;"></span>
+    </div>
+
+    <!-- Cards Grid -->
+    <div id="explore-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
+  </div>
+</div>
+
+<!-- ========================================================
+     ALL MODALS
+     ======================================================== -->
+
+<!-- Modal: Campaign Aktif (Brand) -->
+<div class="modal-overlay" id="modal-campaign-aktif">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Campaign Aktif (4)</h3>
+      <button class="modal-close" onclick="closeModal('modal-campaign-aktif')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="modal-list-item">
+        <div class="modal-item-left"><h4>Glow Up Ramadan</h4><p>UGC Skincare · 12 creator</p></div>
+        <div class="modal-item-right"><div class="price">Rp 14.4M</div><div class="pct">68% selesai</div></div>
+      </div>
+      <div class="modal-list-item">
+        <div class="modal-item-left"><h4>Summer Refresh</h4><p>Product Review · 8 creator</p></div>
+        <div class="modal-item-right"><div class="price">Rp 8M</div><div class="pct">45% selesai</div></div>
+      </div>
+      <div class="modal-list-item">
+        <div class="modal-item-left"><h4>Morning Rituals</h4><p>Lifestyle Vlog · 6 creator</p></div>
+        <div class="modal-item-right"><div class="price">Rp 5.4M</div><div class="pct">90% selesai</div></div>
+      </div>
+      <div class="modal-list-item">
+        <div class="modal-item-left"><h4>Glow Skin Series</h4><p>Short-form · 4 creator</p></div>
+        <div class="modal-item-right"><div class="price">Rp 3.2M</div><div class="pct">20% selesai</div></div>
+      </div>
+    </div>
+    <button class="modal-btn-full" onclick="goTo('kelola-campaign');closeModal('modal-campaign-aktif')">Kelola Semua Campaign</button>
+  </div>
+</div>
+
+<!-- Modal: Creator Terhubung -->
+<div class="modal-overlay" id="modal-creator-terhubung">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Creator Terhubung (28)</h3>
+      <button class="modal-close" onclick="closeModal('modal-creator-terhubung')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;" id="creator-terhubung-list"></div>
+    <p style="text-align:center;font-size:13px;color:var(--primary);margin-top:16px;cursor:pointer;" onclick="goTo('explore');closeModal('modal-creator-terhubung')">+22 creator lainnya</p>
+  </div>
+</div>
+
+<!-- Modal: Konten Selesai (Brand) -->
+<div class="modal-overlay" id="modal-konten-selesai-brand">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Konten Selesai (116)</h3>
+      <button class="modal-close" onclick="closeModal('modal-konten-selesai-brand')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+          <span style="font-size:14px;font-weight:700;">UGC Video</span>
+          <span style="font-size:14px;font-weight:700;">48 konten</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:41%;background:#5B4FE8;"></div></div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+          <span style="font-size:14px;font-weight:700;">Instagram Reels</span>
+          <span style="font-size:14px;font-weight:700;">32 konten</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:28%;background:#E040FB;"></div></div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+          <span style="font-size:14px;font-weight:700;">TikTok Video</span>
+          <span style="font-size:14px;font-weight:700;">24 konten</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:21%;background:#010101;"></div></div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+          <span style="font-size:14px;font-weight:700;">Story & Feed Post</span>
+          <span style="font-size:14px;font-weight:700;">12 konten</span>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--green);"></div></div>
+      </div>
+    </div>
+    <div style="background:var(--green-light);border-radius:var(--radius-m);padding:16px;text-align:center;margin-top:16px;">
+      <span style="font-size:16px;font-weight:800;color:#059669;">92% tepat waktu</span>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Rating Brand -->
+<div class="modal-overlay" id="modal-rating-brand">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Rata-rata Rating (4.9)</h3>
+      <button class="modal-close" onclick="closeModal('modal-rating-brand')">×</button>
+    </div>
+    <div style="background:var(--yellow-light);border-radius:var(--radius-m);padding:24px;text-align:center;margin-bottom:20px;">
+      <div style="font-size:48px;font-weight:800;color:var(--ink);">4.9</div>
+      <div style="color:var(--yellow);font-size:24px;margin:4px 0;">★★★★★</div>
+      <div style="font-size:13px;color:var(--ink-3);">dari 86 kolaborasi</div>
+    </div>
+    <div>
+      <div class="rating-bar-row"><span class="rating-bar-label">5★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:91%;"></div></div><span class="rating-bar-count">78</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">4★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:7%;"></div></div><span class="rating-bar-count">6</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">3★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%;"></div></div><span class="rating-bar-count">2</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">2★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">1★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Penghasilan Creator -->
+<div class="modal-overlay" id="modal-penghasilan">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Penghasilan Bulan Ini</h3>
+      <button class="modal-close" onclick="closeModal('modal-penghasilan')">×</button>
+    </div>
+    <div style="background:var(--green-light);border-radius:var(--radius-m);padding:24px;text-align:center;margin-bottom:20px;">
+      <div style="font-size:40px;font-weight:800;color:var(--ink);letter-spacing:-0.03em;">Rp 8.4M</div>
+      <div style="font-size:13px;color:var(--green);font-weight:700;margin-top:6px;">+18% dari bulan lalu</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="modal-list-item">
+        <span style="font-size:14px;font-weight:600;color:var(--ink-2);">Lumera Beauty – Reels x2</span>
+        <span style="font-size:15px;font-weight:800;color:var(--green);">Rp 2.8M</span>
+      </div>
+      <div class="modal-list-item">
+        <span style="font-size:14px;font-weight:600;color:var(--ink-2);">Hutan Kopi – Story Series</span>
+        <span style="font-size:15px;font-weight:800;color:var(--green);">Rp 1.6M</span>
+      </div>
+      <div class="modal-list-item">
+        <span style="font-size:14px;font-weight:600;color:var(--ink-2);">Verdana Sport – TikTok</span>
+        <span style="font-size:15px;font-weight:800;color:var(--green);">Rp 2.2M</span>
+      </div>
+      <div class="modal-list-item">
+        <span style="font-size:14px;font-weight:600;color:var(--ink-2);">Nauri Organics – UGC</span>
+        <span style="font-size:15px;font-weight:800;color:var(--green);">Rp 1.8M</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Campaign Aktif Creator -->
+<div class="modal-overlay" id="modal-campaign-aktif-creator">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Campaign Aktif (3)</h3>
+      <button class="modal-close" onclick="closeModal('modal-campaign-aktif-creator')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="avatar-letter" style="background:#FECACA;color:#DC2626;width:40px;height:40px;font-size:14px;border-radius:10px;">L</div>
+          <div><div style="font-size:15px;font-weight:700;">Glow Routine Series</div><div style="font-size:12px;color:var(--ink-3);">Lumera Beauty</div></div>
+          <span style="margin-left:auto;font-size:12px;font-weight:600;background:var(--bg);color:var(--ink-3);padding:5px 12px;border-radius:999px;border:1px solid var(--border);">Menunggu brief</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink-4);">Konten due: 20 Mei</div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="avatar-letter" style="background:#FEF3C7;color:#D97706;width:40px;height:40px;font-size:14px;border-radius:10px;">H</div>
+          <div><div style="font-size:15px;font-weight:700;">Morning Ritual Vlog</div><div style="font-size:12px;color:var(--ink-3);">Hutan Kopi</div></div>
+          <span style="margin-left:auto;font-size:12px;font-weight:600;background:var(--bg);color:var(--ink-3);padding:5px 12px;border-radius:999px;border:1px solid var(--border);">Revisi #1</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink-4);">Konten due: 25 Mei</div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="avatar-letter" style="background:#D1FAE5;color:#059669;width:40px;height:40px;font-size:14px;border-radius:10px;">V</div>
+          <div><div style="font-size:15px;font-weight:700;">Active Lifestyle Reel</div><div style="font-size:12px;color:var(--ink-3);">Verdana Sport</div></div>
+          <span style="margin-left:auto;font-size:12px;font-weight:600;background:var(--bg);color:var(--ink-3);padding:5px 12px;border-radius:999px;border:1px solid var(--border);">Menunggu approve</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink-4);">Konten due: 30 Mei</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Profile Views -->
+<div class="modal-overlay" id="modal-profile-views">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Profile Views — Minggu Ini</h3>
+      <button class="modal-close" onclick="closeModal('modal-profile-views')">×</button>
+    </div>
+    <div style="background:#EFF6FF;border-radius:var(--radius-m);padding:24px;text-align:center;margin-bottom:20px;">
+      <div style="font-size:40px;font-weight:800;color:var(--ink);letter-spacing:-0.03em;">1.2K</div>
+      <div style="font-size:13px;color:var(--blue);font-weight:700;margin-top:6px;">+164 dibanding minggu lalu</div>
+    </div>
+    <div>
+      <div class="bar-row"><span class="bar-label">Senin</span><div class="bar-track"><div class="bar-fill" style="width:73%;background:var(--blue);"></div></div><span class="bar-count">148</span></div>
+      <div class="bar-row"><span class="bar-label">Selasa</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--blue);"></div></div><span class="bar-count">162</span></div>
+      <div class="bar-row"><span class="bar-label">Rabu</span><div class="bar-track"><div class="bar-fill" style="width:87%;background:var(--blue);"></div></div><span class="bar-count">175</span></div>
+      <div class="bar-row"><span class="bar-label">Kamis</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--blue);"></div></div><span class="bar-count">201</span></div>
+      <div class="bar-row"><span class="bar-label">Jumat</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:var(--blue);"></div></div><span class="bar-count">190</span></div>
+      <div class="bar-row"><span class="bar-label">Sabtu</span><div class="bar-track"><div class="bar-fill" style="width:82%;background:var(--blue);"></div></div><span class="bar-count">165</span></div>
+      <div class="bar-row"><span class="bar-label">Minggu</span><div class="bar-track"><div class="bar-fill" style="width:79%;background:var(--blue);"></div></div><span class="bar-count">159</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Rating Creator -->
+<div class="modal-overlay" id="modal-rating-creator">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Rating Creator (4.9)</h3>
+      <button class="modal-close" onclick="closeModal('modal-rating-creator')">×</button>
+    </div>
+    <div style="background:var(--yellow-light);border-radius:var(--radius-m);padding:24px;text-align:center;margin-bottom:20px;">
+      <div style="font-size:48px;font-weight:800;color:var(--ink);">4.9</div>
+      <div style="color:var(--yellow);font-size:24px;margin:4px 0;">★★★★★</div>
+      <div style="font-size:13px;color:var(--ink-3);">dari 86 ulasan brand</div>
+    </div>
+    <div>
+      <div class="rating-bar-row"><span class="rating-bar-label">5★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:93%;"></div></div><span class="rating-bar-count">80</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">4★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:6%;"></div></div><span class="rating-bar-count">5</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">3★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%;"></div></div><span class="rating-bar-count">1</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">2★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">1★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Help Button -->
+<button onclick="alert('Butuh bantuan? Hubungi support@kawankonten.id')" style="position:fixed;bottom:28px;right:28px;width:44px;height:44px;border-radius:50%;background:#fff;border:1.5px solid var(--border);box-shadow:var(--shadow-lg);font-size:18px;cursor:pointer;z-index:150;color:var(--ink-3);">?</button>
 
 <script>
-(function(){
-  // ---------- Smart Matching demo ----------
-  var creators = [
-    {name:"Rani Anindita", handle:"@raniandtales", cat:"Kecantikan", followers:"24,5rb", rate:"850rb–1,2jt", rating:"4.9", color:"#6A5CFF"},
-    {name:"Bimo Saputra", handle:"@bimolahap", cat:"Kuliner", followers:"41rb", rate:"1jt–1,5jt", rating:"4.7", color:"#00B88D"},
-    {name:"Kayla Renata", handle:"@kayla.ootd", cat:"Fesyen", followers:"18,2rb", rate:"600rb–900rb", rating:"5.0", color:"#E88B4B"},
-    {name:"Dimas Gaminglife", handle:"@dimasggwp", cat:"Gaming", followers:"63rb", rate:"1,2jt–1,8jt", rating:"4.6", color:"#4A90D9"},
-    {name:"Sasa Kitchen", handle:"@sasa.kitchen", cat:"Kuliner", followers:"29,8rb", rate:"800rb–1,1jt", rating:"4.8", color:"#00B88D"},
-    {name:"Fajar Techtalk", handle:"@fajartechtalk", cat:"Teknologi", followers:"35rb", rate:"900rb–1,3jt", rating:"4.5", color:"#4A90D9"},
-    {name:"Bunda Nadia", handle:"@bundanadiacerita", cat:"Parenting", followers:"22rb", rate:"700rb–1jt", rating:"4.9", color:"#E85B7A"},
-    {name:"Vino Streetstyle", handle:"@vino.street", cat:"Fesyen", followers:"15,4rb", rate:"500rb–800rb", rating:"4.7", color:"#E88B4B"}
-  ];
+// ============================================================
+// DATA
+// ============================================================
+var creators = [
+  {name:"Nadya Putri",handle:"@nadyaputri",niche:"Beauty & Skincare",followers:"48.2K",followersRaw:48200,rate:"Rp 1.1M–1.6M",rateRaw:1100000,rating:4.9,match:94,img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=400&fit=crop&crop=face"},
+  {name:"Raka Pradana",handle:"@rakapradana",niche:"Food & Lifestyle",followers:"36.8K",followersRaw:36800,rate:"Rp 800K–1.2M",rateRaw:800000,rating:4.8,match:91,img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop&crop=face"},
+  {name:"Alika Senja",handle:"@alikasenja",niche:"Fashion & Travel",followers:"72.4K",followersRaw:72400,rate:"Rp 1.4M–2M",rateRaw:1400000,rating:4.9,match:88,img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=400&fit=crop&crop=face"},
+  {name:"Dimas Surya",handle:"@dimassurya",niche:"Tech & Productivity",followers:"29.1K",followersRaw:29100,rate:"Rp 700K–1M",rateRaw:700000,rating:4.7,match:85,img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=400&fit=crop&crop=face"},
+  {name:"Citra Ayu",handle:"@citraayu",niche:"Wellness & Fitness",followers:"55.6K",followersRaw:55600,rate:"Rp 1.2M–1.8M",rateRaw:1200000,rating:4.8,match:82,img:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&h=400&fit=crop&crop=face"},
+  {name:"Kevin Wijaya",handle:"@kevinwijaya",niche:"Gaming & Tech",followers:"91.3K",followersRaw:91300,rate:"Rp 1.8M–2.5M",rateRaw:1800000,rating:4.6,match:78,img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=400&fit=crop&crop=face"}
+];
 
-  function initials(name){
-    return name.split(" ").slice(0,2).map(function(w){return w[0];}).join("").toUpperCase();
+var brands = [
+  {name:"Lumera Beauty",letter:"L",color:"#FECACA",textColor:"#DC2626",niche:"Skincare & Beauty",rating:4.8,campaigns:24,rateRange:"Rp 800K – 2M",desc:"Brand kecantikan lokal fokus pada skincare clean beauty.",active:true},
+  {name:"Hutan Kopi",letter:"H",color:"#FEF3C7",textColor:"#D97706",niche:"F&B / Coffee",rating:4.7,campaigns:12,rateRange:"Rp 500K – 1.2M",desc:"Kopi specialty dari petani lokal Nusantara.",active:true},
+  {name:"Arkai Studio",letter:"A",color:"#EDE9FE",textColor:"#7C3AED",niche:"Fashion & Lifestyle",rating:4.6,campaigns:8,rateRange:"Rp 1M – 3M",desc:"Slow fashion brand dengan koleksi ready-to-wear artisanal.",active:false},
+  {name:"Verdana Sport",letter:"V",color:"#D1FAE5",textColor:"#059669",niche:"Wellness & Fitness",rating:4.9,campaigns:18,rateRange:"Rp 1.2M – 2.8M",desc:"Perlengkapan olahraga untuk gaya hidup aktif.",active:true},
+  {name:"Nauri Organics",letter:"N",color:"#FEE2E2",textColor:"#DC2626",niche:"Beauty & Skincare",rating:4.5,campaigns:6,rateRange:"Rp 600K – 1.5M",desc:"Skincare organik dengan bahan alami pilihan.",active:false},
+  {name:"Bytedash",letter:"B",color:"#DBEAFE",textColor:"#2563EB",niche:"Tech & Productivity",rating:4.7,campaigns:10,rateRange:"Rp 1.5M – 4M",desc:"Aplikasi produktivitas untuk profesional muda.",active:true}
+];
+
+var campaigns = [
+  {name:"Glow Up Ramadan",category:"UGC Skincare",status:"Aktif",creators:12,sent:8,approved:6,budget:"Rp 14.4M",progress:68},
+  {name:"Summer Refresh",category:"Product Review",status:"Aktif",creators:8,sent:3,approved:3,budget:"Rp 8M",progress:45},
+  {name:"Morning Rituals",category:"Lifestyle Vlog",status:"Aktif",creators:6,sent:6,approved:5,budget:"Rp 5.4M",progress:90},
+  {name:"Winter Glow",category:"Skincare Tutorial",status:"Selesai",creators:5,sent:5,approved:5,budget:"Rp 6.2M",progress:100}
+];
+
+var peluang = [
+  {brand:"Avoskin",letter:"A",color:"#D1FAE5",textColor:"#059669",title:"Daily Skincare Routine",type:"1× TikTok Video",deadline:"Apply sebelum 18 Mei",budget:"Rp 1.4M",match:96},
+  {brand:"Buttonscarves",letter:"B",color:"#DBEAFE",textColor:"#2563EB",title:"Eid Styling Inspiration",type:"1× Reels + Story",deadline:"Apply sebelum 20 Mei",budget:"Rp 1.8M",match:91},
+  {brand:"Sensatia",letter:"S",color:"#FEF3C7",textColor:"#D97706",title:"Body Care Campaign",type:"2× UGC Video",deadline:"Apply sebelum 25 Mei",budget:"Rp 2.2M",match:87}
+];
+
+var connectedCreators = [
+  {name:"Nadya Putri",niche:"Beauty & Skincare",rating:4.9,img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=face"},
+  {name:"Raka Pradana",niche:"Food & Lifestyle",rating:4.8,img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"},
+  {name:"Alika Senja",niche:"Fashion & Travel",rating:4.9,img:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop&crop=face"},
+  {name:"Dimas Surya",niche:"Tech & Productivity",rating:4.7,img:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=60&h=60&fit=crop&crop=face"},
+  {name:"Citra Ayu",niche:"Wellness & Fitness",rating:4.8,img:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=60&h=60&fit=crop&crop=face"},
+  {name:"Kevin Wijaya",niche:"Gaming & Tech",rating:4.6,img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=face"}
+];
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+var currentMode = 'creator'; // 'creator' | 'brand'
+
+function goTo(pageId) {
+  // track mode
+  if (pageId === 'brand-dashboard' || pageId === 'kelola-campaign') currentMode = 'brand';
+  if (pageId === 'creator-dashboard' || pageId === 'media-kit') currentMode = 'creator';
+
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  var target = document.getElementById('page-' + pageId);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo(0, 0);
+    // update explore nav based on mode
+    if (pageId === 'explore') setupExplorePage();
   }
+}
 
-  var grid = document.getElementById("creatorGrid");
-  function render(list){
-    grid.innerHTML = "";
-    if(list.length === 0){
-      var empty = document.createElement("div");
-      empty.className = "empty-state";
-      empty.textContent = "Belum ada kreator di kategori ini — coba kategori lain.";
-      grid.appendChild(empty);
-      return;
+// ============================================================
+// MODAL
+// ============================================================
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+// close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
     }
-    list.forEach(function(c){
-      var card = document.createElement("div");
-      card.className = "creator-card";
+  });
+});
+// close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// ============================================================
+// BRAND DASHBOARD — creator cards
+// ============================================================
+function renderBrandCreatorGrid() {
+  var grid = document.getElementById('brand-creator-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  creators.slice(0, 3).forEach(function(c) {
+    var card = document.createElement('div');
+    card.style.cssText = 'border-radius:16px;overflow:hidden;position:relative;cursor:pointer;';
+    card.innerHTML = '<div style="aspect-ratio:3/4;position:relative;">' +
+      '<img src="' + c.img + '" alt="' + c.name + '" style="width:100%;height:100%;object-fit:cover;">' +
+      '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);"></div>' +
+      '<div style="position:absolute;top:10px;left:10px;background:var(--green);color:#04241C;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;display:flex;align-items:center;gap:4px;">✦ ' + c.match + '% Match</div>' +
+      '<div style="position:absolute;bottom:12px;left:12px;right:12px;">' +
+        '<div style="font-size:14px;font-weight:800;color:#fff;">' + c.name + '</div>' +
+        '<div style="font-size:11px;color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:4px;margin-top:2px;">' +
+          '<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="14" rx="2" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none"/></svg> ' + c.followers +
+        '</div>' +
+      '</div>' +
+    '</div>';
+    card.onclick = function() { openModal('modal-creator-terhubung'); };
+    grid.appendChild(card);
+  });
+}
+
+// ============================================================
+// CREATOR DASHBOARD — peluang
+// ============================================================
+function renderPeluang() {
+  var list = document.getElementById('creator-peluang-list');
+  if (!list) return;
+  list.innerHTML = '';
+  peluang.forEach(function(p) {
+    var item = document.createElement('div');
+    item.className = 'card';
+    item.style.cssText = 'padding:16px 20px;border:1.5px solid var(--border);display:flex;align-items:center;gap:14px;cursor:pointer;transition:box-shadow .15s;';
+    item.innerHTML =
+      '<div style="width:40px;height:40px;border-radius:10px;background:' + p.color + ';color:' + p.textColor + ';display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;flex-shrink:0;">' + p.letter + '</div>' +
+      '<div style="flex:1;">' +
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">' +
+          '<span style="font-size:11px;color:' + p.textColor + ';font-weight:700;">' + p.brand + '</span>' +
+          '<span style="font-size:10px;font-weight:800;background:var(--green-light);color:#059669;padding:2px 8px;border-radius:999px;">' + p.match + '% FIT</span>' +
+        '</div>' +
+        '<div style="font-size:14px;font-weight:700;color:var(--ink);">' + p.title + '</div>' +
+        '<div style="font-size:12px;color:var(--ink-3);">' + p.type + ' · ' + p.deadline + '</div>' +
+      '</div>' +
+      '<div style="text-align:right;flex-shrink:0;">' +
+        '<div style="font-size:15px;font-weight:800;color:var(--ink);">' + p.budget + '</div>' +
+        '<a style="font-size:12px;color:var(--primary);font-weight:600;">Lihat brief →</a>' +
+      '</div>';
+    item.onmouseover = function(){ this.style.boxShadow = 'var(--shadow-lg)'; };
+    item.onmouseout = function(){ this.style.boxShadow = ''; };
+    list.appendChild(item);
+  });
+}
+
+// ============================================================
+// KELOLA CAMPAIGN
+// ============================================================
+var activeCampaignFilter = 'Semua';
+
+function filterCampaign(filter, btn) {
+  activeCampaignFilter = filter;
+  document.querySelectorAll('#page-kelola-campaign .chip-filter').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderCampaignList();
+}
+
+function renderCampaignList() {
+  var list = document.getElementById('campaign-list');
+  if (!list) return;
+  list.innerHTML = '';
+  var filtered = campaigns.filter(function(c) {
+    return activeCampaignFilter === 'Semua' || c.status === activeCampaignFilter;
+  });
+  filtered.forEach(function(c) {
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.style.padding = '24px';
+    card.innerHTML =
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<h3 style="font-size:18px;font-weight:800;color:var(--ink);">' + c.name + '</h3>' +
+          '<span class="badge ' + (c.status === 'Aktif' ? 'badge-green' : 'badge-grey') + '">' + c.status + '</span>' +
+        '</div>' +
+        '<div style="display:flex;gap:32px;flex-wrap:wrap;">' +
+          '<div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:var(--ink);">' + c.creators + '</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Creator</div></div>' +
+          '<div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:var(--ink);">' + c.sent + '</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Terkirim</div></div>' +
+          '<div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:var(--ink);">' + c.approved + '</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Disetujui</div></div>' +
+          '<div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:var(--primary);">' + c.budget + '</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Budget</div></div>' +
+        '</div>' +
+      '</div>' +
+      '<p style="font-size:12px;color:var(--ink-3);margin-bottom:8px;">Progress campaign</p>' +
+      '<div class="progress-track"><div class="progress-fill" style="width:' + c.progress + '%;"></div></div>' +
+      '<div style="text-align:right;font-size:12px;font-weight:700;color:var(--ink-3);margin-top:4px;">' + c.progress + '%</div>';
+    list.appendChild(card);
+  });
+}
+
+// ============================================================
+// EXPLORE PAGE
+// ============================================================
+var exploreTab = 'creator';
+var sortMode = 'Semua';
+
+function setupExplorePage() {
+  // adjust nav links based on mode
+  var navLinks = document.getElementById('explore-nav-links');
+  var modeLabel = document.getElementById('explore-mode-label');
+  if (currentMode === 'brand') {
+    navLinks.innerHTML =
+      '<a href="#" onclick="goTo(\'brand-dashboard\');return false;">Dashboard</a>' +
+      '<a href="#" onclick="goTo(\'explore\');return false;" class="active">Find Creators</a>';
+    modeLabel.textContent = 'Brand Mode';
+    exploreTab = 'creator';
+  } else {
+    navLinks.innerHTML =
+      '<a href="#" onclick="goTo(\'creator-dashboard\');return false;">Dashboard</a>' +
+      '<a href="#" onclick="goTo(\'media-kit\');return false;">My Media Kit</a>' +
+      '<a href="#" onclick="goTo(\'explore\');return false;" class="active">Jelajahi</a>';
+    modeLabel.textContent = 'Creator Mode';
+  }
+  // reset tabs
+  document.getElementById('tab-creator').classList.toggle('active', exploreTab === 'creator');
+  document.getElementById('tab-brand').classList.toggle('active', exploreTab === 'brand');
+  var followersEl = document.querySelector('.explore-creator-only');
+  if (followersEl) followersEl.style.display = exploreTab === 'creator' ? '' : 'none';
+  renderExplore();
+}
+
+function switchExploreTab(tab) {
+  exploreTab = tab;
+  document.getElementById('tab-creator').classList.toggle('active', tab === 'creator');
+  document.getElementById('tab-brand').classList.toggle('active', tab === 'brand');
+  var followersEl = document.querySelector('.explore-creator-only');
+  if (followersEl) followersEl.style.display = tab === 'creator' ? '' : 'none';
+  var sortTabs = document.getElementById('sort-tabs');
+  if (sortTabs) sortTabs.style.display = tab === 'creator' ? '' : 'none';
+  document.getElementById('explore-search').value = '';
+  document.getElementById('explore-niche').value = '';
+  renderExplore();
+}
+
+function setSort(mode, btn) {
+  sortMode = mode;
+  document.querySelectorAll('#sort-tabs .chip-filter').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderExplore();
+}
+
+function renderExplore() {
+  var grid = document.getElementById('explore-grid');
+  var countEl = document.getElementById('explore-count');
+  if (!grid) return;
+  var search = (document.getElementById('explore-search') ? document.getElementById('explore-search').value : '').toLowerCase();
+  var niche = document.getElementById('explore-niche') ? document.getElementById('explore-niche').value : '';
+
+  if (exploreTab === 'creator') {
+    var list = creators.filter(function(c) {
+      var matchSearch = !search || c.name.toLowerCase().includes(search) || c.niche.toLowerCase().includes(search) || c.handle.toLowerCase().includes(search);
+      var matchNiche = !niche || c.niche === niche;
+      return matchSearch && matchNiche;
+    });
+    if (sortMode === 'Top Rated') list.sort(function(a,b){ return b.rating - a.rating; });
+    else if (sortMode === 'Best Match') list.sort(function(a,b){ return b.match - a.match; });
+    else if (sortMode === 'Lowest Rate') list.sort(function(a,b){ return a.rateRaw - b.rateRaw; });
+    else if (sortMode === 'Most Relevant') list.sort(function(a,b){ return b.followersRaw - a.followersRaw; });
+    if (countEl) countEl.textContent = list.length + ' creator';
+    grid.innerHTML = '';
+    list.forEach(function(c) {
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.style.cssText = 'overflow:hidden;cursor:pointer;transition:transform .18s,box-shadow .18s;';
       card.innerHTML =
-        '<div class="cc-top">' +
-          '<div class="cc-avatar" style="background:'+c.color+'">'+initials(c.name)+'</div>' +
-          '<div><div class="cc-name">'+c.name+'</div><div class="cc-cat">'+c.handle+' · '+c.cat+'</div></div>' +
+        '<div style="position:relative;aspect-ratio:3/4;">' +
+          '<img src="' + c.img + '" alt="' + c.name + '" style="width:100%;height:100%;object-fit:cover;">' +
+          '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 55%);"></div>' +
+          '<div style="position:absolute;top:10px;left:10px;background:var(--green);color:#04241C;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;">✦ ' + c.match + '% Match</div>' +
+          '<div style="position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="#374151" stroke-width="2" fill="none"/></svg></div>' +
+          '<div style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.5);color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px;display:flex;align-items:center;gap:4px;"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="14" rx="2" stroke="white" stroke-width="2.5" fill="none"/></svg> ' + c.followers + '</div>' +
         '</div>' +
-        '<div class="cc-meta">' +
-          '<div>Pengikut<b>'+c.followers+'</b></div>' +
-          '<div>Rate / konten<b>Rp '+c.rate+'</b></div>' +
-        '</div>' +
-        '<div class="cc-rating">★ '+c.rating+' dari brand sebelumnya</div>';
+        '<div style="padding:14px 16px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">' +
+            '<h4 style="font-size:15px;font-weight:800;color:var(--ink);">' + c.name + '</h4>' +
+            '<span style="color:var(--yellow);font-size:13px;">★ ' + c.rating + '</span>' +
+          '</div>' +
+          '<p style="font-size:12px;color:var(--ink-3);">' + c.niche + '</p>' +
+          '<p style="font-size:12px;color:var(--ink-2);font-weight:600;margin-top:6px;">' + c.rate + '</p>' +
+        '</div>';
+      card.onmouseover = function(){ this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'; };
+      card.onmouseout = function(){ this.style.transform=''; this.style.boxShadow=''; };
+      grid.appendChild(card);
+    });
+  } else {
+    // Brand tab
+    var blist = brands.filter(function(b) {
+      var matchSearch = !search || b.name.toLowerCase().includes(search) || b.niche.toLowerCase().includes(search);
+      var matchNiche = !niche || b.niche === niche;
+      return matchSearch && matchNiche;
+    });
+    if (countEl) countEl.textContent = blist.length + ' brand';
+    grid.innerHTML = '';
+    blist.forEach(function(b) {
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.style.cssText = 'padding:20px;cursor:pointer;transition:transform .18s,box-shadow .18s;';
+      card.innerHTML =
+        (b.active ? '<div style="position:absolute;top:16px;right:16px;" class="badge badge-green">Aktif rekrut</div>' : '') +
+        '<div style="position:relative;">' +
+          '<div style="width:56px;height:56px;border-radius:14px;background:' + b.color + ';color:' + b.textColor + ';display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin-bottom:16px;">' + b.letter + '</div>' +
+          '<h4 style="font-size:17px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;">' + b.name + ' <span style="color:var(--yellow);font-size:13px;">★ ' + b.rating + '</span></h4>' +
+          '<p style="font-size:12px;color:var(--ink-3);margin-bottom:8px;">' + b.niche + '</p>' +
+          '<p style="font-size:13px;color:var(--ink-2);line-height:1.5;margin-bottom:16px;">' + b.desc + '</p>' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border);">' +
+            '<div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;">' + b.campaigns + ' Campaign Selesai</div><div style="font-size:13px;font-weight:700;color:var(--ink-2);">' + b.rateRange + '</div></div>' +
+            '<button class="btn btn-outline btn-sm">Lihat Brand</button>' +
+          '</div>' +
+        '</div>';
+      card.style.position = 'relative';
+      card.onmouseover = function(){ this.style.transform='translateY(-3px)'; this.style.boxShadow='var(--shadow-lg)'; };
+      card.onmouseout = function(){ this.style.transform=''; this.style.boxShadow=''; };
       grid.appendChild(card);
     });
   }
-  render(creators);
+}
 
-  document.getElementById("chipRow").addEventListener("click", function(e){
-    var btn = e.target.closest(".chip");
-    if(!btn) return;
-    document.querySelectorAll(".chip").forEach(function(c){c.classList.remove("active");});
-    btn.classList.add("active");
-    var cat = btn.getAttribute("data-cat");
-    render(cat === "Semua" ? creators : creators.filter(function(c){return c.cat === cat;}));
+// ============================================================
+// CONNECTED CREATORS MODAL
+// ============================================================
+function renderConnectedCreators() {
+  var list = document.getElementById('creator-terhubung-list');
+  if (!list) return;
+  connectedCreators.forEach(function(c) {
+    var item = document.createElement('div');
+    item.className = 'modal-list-item';
+    item.innerHTML =
+      '<div style="display:flex;align-items:center;gap:12px;">' +
+        '<img src="' + c.img + '" alt="' + c.name + '" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">' +
+        '<div><div style="font-size:14px;font-weight:700;">' + c.name + '</div><div style="font-size:12px;color:var(--ink-3);">' + c.niche + '</div></div>' +
+      '</div>' +
+      '<div style="color:var(--yellow);font-weight:700;">★ ' + c.rating + '</div>';
+    list.appendChild(item);
   });
+}
 
-  // ---------- How it works tabs ----------
-  document.querySelectorAll(".tab-btn").forEach(function(btn){
-    btn.addEventListener("click", function(){
-      document.querySelectorAll(".tab-btn").forEach(function(b){b.classList.remove("active");});
-      document.querySelectorAll(".steps").forEach(function(s){s.classList.remove("active");});
-      btn.classList.add("active");
-      document.getElementById("steps-" + btn.getAttribute("data-tab")).classList.add("active");
-    });
-  });
-
-  // ---------- Waitlist (per-viewer, local only) ----------
-  var form = document.getElementById("waitlistForm");
-  var msg = document.getElementById("waitlistMsg");
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-    var email = document.getElementById("waitlistEmail").value;
-    try{
-      var list = JSON.parse(localStorage.getItem("kk_waitlist") || "[]");
-      list.push(email);
-      localStorage.setItem("kk_waitlist", JSON.stringify(list));
-    }catch(err){ /* storage unavailable, still confirm to user */ }
-    msg.textContent = "Makasih! Kami akan kabari " + email + " begitu KawanKonten dibuka.";
-    form.reset();
-  });
-})();
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', function() {
+  renderBrandCreatorGrid();
+  renderPeluang();
+  renderCampaignList();
+  renderConnectedCreators();
+  renderExplore();
+  setupExplorePage();
+});
 </script>
-
 </body>
 </html>
