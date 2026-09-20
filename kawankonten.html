@@ -48,7 +48,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* ===== LAYOUT ===== */
-.wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 .page { display: none; min-height: 100vh; }
 .page.active { display: block; }
 
@@ -331,35 +331,36 @@ button { cursor: pointer; font-family: inherit; }
         </div>
         <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
       </div>
-      <span class="nav-tagline">Kolaborasi yang tepat dimulai dari sini.</span>
+      <span class="nav-tagline"><strong>Kolaborasi yang tepat dimulai dari sini.</strong></span>
     </div>
   </nav>
 
-  <div style="min-height: calc(100vh - 64px); background: linear-gradient(160deg, #EEF0FF 0%, #F0F2F8 50%, #E8F5F1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px;">
-    <div style="text-align: center; max-width: 680px; width: 100%;">
+  <div style="min-height: calc(100vh - 64px); background: linear-gradient(160deg, #EEF0FF 0%, #F0F2F8 50%, #E8F5F1 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 40px;">
+    <div style="text-align: center; max-width: 960px; width: 100%;">
       <div style="display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--border); border-radius: 999px; padding: 8px 18px; font-size: 12px; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 28px;">
         <span>✦</span> Selamat Datang di KawanKonten
       </div>
-      <h1 style="font-size: clamp(36px, 6vw, 60px); font-weight: 800; letter-spacing: -0.03em; color: var(--ink); line-height: 1.08; margin-bottom: 16px;">
-        Kamu datang sebagai <span style="background: #E5E7EB; border-radius: 8px; padding: 0 8px;">siapa?</span>
+      <h1 style="font-size: clamp(40px, 6vw, 68px); font-weight: 800; letter-spacing: -0.03em; color: var(--ink); line-height: 1.08; margin-bottom: 16px;">
+        Kamu datang sebagai <span style="color: var(--ink);">siapa?</span>
       </h1>
       <p style="font-size: 16px; color: var(--ink-3); margin-bottom: 48px; line-height: 1.6;">
         Pilih peranmu supaya kami bisa menyiapkan pengalaman, rekomendasi, dan fitur yang paling sesuai.
       </p>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 680px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; margin: 0 auto;">
         <!-- Brand Card -->
-        <button onclick="goTo('brand-dashboard')" style="background: none; border: none; text-align: left; cursor: pointer;">
-          <div style="border-radius: 24px; overflow: hidden; position: relative; min-height: 280px; background: #1a1a2e; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; transition: transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 48px rgba(0,0,0,0.25)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="position: absolute; inset: 0; background: linear-gradient(160deg, rgba(30,30,60,0.7) 0%, rgba(10,10,30,0.95) 100%); border-radius: 24px;"></div>
+        <button onclick="goTo('brand-dashboard')" style="background: none; border: none; text-align: left; cursor: pointer; width: 100%;">
+          <div style="border-radius: 24px; overflow: hidden; position: relative; min-height: 360px; background: #1a1a2e; display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; transition: transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 48px rgba(0,0,0,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.35;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(160deg, rgba(10,10,30,0.5) 0%, rgba(10,10,30,0.92) 100%);"></div>
             <div style="position: absolute; top: 28px; left: 28px; width: 44px; height: 44px; background: rgba(255,255,255,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4" height="9" rx="1" fill="white"/><rect x="10" y="7" width="4" height="14" rx="1" fill="white"/><rect x="17" y="3" width="4" height="18" rx="1" fill="white"/></svg>
             </div>
             <div style="position: relative; z-index: 1;">
               <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-bottom: 10px;">Saya Sebuah Brand</p>
-              <h2 style="font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em;">Cari creator yang tepat</h2>
-              <p style="font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; margin-bottom: 24px;">Temukan talent, bandingkan media kit, dan mulai campaign sesuai target dan budgetmu.</p>
-              <div style="display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 999px;">
+              <h2 style="font-size: 30px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em;">Cari creator yang tepat</h2>
+              <p style="font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 28px;">Temukan talent, bandingkan media kit, dan mulai campaign sesuai target dan budgetmu.</p>
+              <div style="display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--ink); font-size: 14px; font-weight: 700; padding: 13px 24px; border-radius: 999px;">
                 Masuk sebagai Brand →
               </div>
             </div>
@@ -367,17 +368,18 @@ button { cursor: pointer; font-family: inherit; }
         </button>
 
         <!-- Creator Card -->
-        <button onclick="goTo('creator-dashboard')" style="background: none; border: none; text-align: left; cursor: pointer;">
-          <div style="border-radius: 24px; overflow: hidden; position: relative; min-height: 280px; background: linear-gradient(160deg, #6C63FF 0%, #4F46E5 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; transition: transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 48px rgba(91,79,232,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-            <div style="position: absolute; inset: 0; background: linear-gradient(160deg, rgba(108,99,255,0.3) 0%, rgba(79,70,229,0.9) 100%); border-radius: 24px;"></div>
+        <button onclick="goTo('creator-dashboard')" style="background: none; border: none; text-align: left; cursor: pointer; width: 100%;">
+          <div style="border-radius: 24px; overflow: hidden; position: relative; min-height: 360px; background: linear-gradient(160deg, #6C63FF 0%, #4F46E5 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; transition: transform .2s, box-shadow .2s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 48px rgba(91,79,232,0.45)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=400&fit=crop" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.3;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(160deg, rgba(79,70,229,0.55) 0%, rgba(79,70,229,0.92) 100%);"></div>
             <div style="position: absolute; top: 28px; left: 28px; width: 44px; height: 44px; background: rgba(255,255,255,0.18); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" fill="white"/><rect x="13" y="3" width="8" height="8" rx="2" fill="white" fill-opacity="0.6"/><rect x="3" y="13" width="8" height="8" rx="2" fill="white" fill-opacity="0.6"/><circle cx="17" cy="17" r="4" fill="white"/></svg>
             </div>
             <div style="position: relative; z-index: 1;">
-              <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.75); margin-bottom: 10px;">Saya Seorang Creator</p>
-              <h2 style="font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em;">Tumbuhkan karier kreatifmu</h2>
-              <p style="font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.5; margin-bottom: 24px;">Tampilkan karya terbaik, atur rate card, dan dapatkan kolaborasi dari brand impianmu.</p>
-              <div style="display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--primary); font-size: 14px; font-weight: 700; padding: 12px 22px; border-radius: 999px;">
+              <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); margin-bottom: 10px;">Saya Seorang Creator</p>
+              <h2 style="font-size: 30px; font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.02em;">Tumbuhkan karier kreatifmu</h2>
+              <p style="font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.6; margin-bottom: 28px;">Tampilkan karya terbaik, atur rate card, dan dapatkan kolaborasi dari brand impianmu.</p>
+              <div style="display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--primary); font-size: 14px; font-weight: 700; padding: 13px 24px; border-radius: 999px;">
                 Masuk sebagai Creator →
               </div>
             </div>
@@ -681,18 +683,22 @@ button { cursor: pointer; font-family: inherit; }
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3) 100%);"></div>
   </div>
 
-  <div class="wrap" style="padding-bottom: 48px;">
+  <div class="wrap" style="padding-top: 32px; padding-bottom: 48px;">
     <!-- Profile Row -->
-    <div style="display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; margin-top: -60px;">
+    <div style="display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start;">
       <!-- Left: Profile Info -->
       <div>
         <div class="card" style="padding: 28px; margin-bottom: 20px;">
-          <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 20px;">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Nadya" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Nadya" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--border);">
+              <div>
+                <h2 style="font-size: 22px; font-weight: 800; color: var(--ink); margin-bottom: 2px;">Nadya Putri</h2>
+                <p style="font-size: 13px; color: var(--ink-3);">@nadyaputri · Jakarta, ID</p>
+              </div>
+            </div>
             <button class="btn btn-outline btn-sm">Edit Profil</button>
           </div>
-          <h2 style="font-size: 24px; font-weight: 800; color: var(--ink); margin-bottom: 4px;">Nadya Putri</h2>
-          <p style="font-size: 13px; color: var(--ink-3); margin-bottom: 14px;">@nadyaputri · Jakarta, ID</p>
           <p style="font-size: 14px; color: var(--ink-2); line-height: 1.6; margin-bottom: 16px;">Beauty storyteller who turns everyday rituals into warm, honest content. I help conscious brands connect with Gen Z through scroll-stopping tutorials and relatable reviews.</p>
           <div style="display: flex; flex-wrap: wrap; gap: 8px;">
             <span style="background: var(--bg); color: var(--ink-2); font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;">Skincare</span>
@@ -815,8 +821,8 @@ button { cursor: pointer; font-family: inherit; }
       </div>
 
       <!-- Right: Private Insight -->
-      <div style="position: sticky; top: 88px;">
-        <div style="background: linear-gradient(135deg, var(--primary) 0%, #818CF8 100%); border-radius: var(--radius-l); padding: 24px; color: #fff; margin-top: 24px; margin-bottom: 16px;">
+      <div style="position: sticky; top: 80px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: linear-gradient(135deg, var(--primary) 0%, #818CF8 100%); border-radius: var(--radius-l); padding: 24px; color: #fff;">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
             <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.7);">Private Creator Insight</p>
             <span style="font-size:18px;">✦</span>
