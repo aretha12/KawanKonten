@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KawanKonten — Brand Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+      </div>
+      <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="brand.html" class="active">Dashboard</a>
+      <a href="explore.html">Find Creators</a>
+      <a href="campaigns.html">Campaigns</a>
+      <a href="ads.html">Ads</a>
+      <a href="chat.html">Messages</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html" class="mode-pill">
+        <span class="mode-dot"></span> Brand Mode
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:36px;padding-bottom:48px;">
+
+  <!-- Header -->
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px;">
+    <div>
+      <p class="section-eyebrow">Brand Workspace</p>
+      <h1 style="font-size:clamp(28px,4vw,38px);font-weight:800;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px;">Good morning, Lumera Beauty.</h1>
+      <p style="font-size:14px;color:var(--ink-3);">18 new creators matched your campaign criteria today.</p>
+    </div>
+    <a href="explore.html" class="btn btn-primary btn-lg">Find Creators →</a>
+  </div>
+
+  <!-- Stat Cards -->
+  <div class="stat-grid">
+    <div class="stat-card" onclick="openModal('modal-active-campaigns')">
+      <div class="stat-icon violet">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" fill="#5B4FE8"/><rect x="13" y="3" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/><rect x="3" y="13" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/></svg>
+      </div>
+      <div class="stat-num">04</div>
+      <div class="stat-label">Active Campaigns</div>
+      <div class="stat-sub">+1 this month</div>
+    </div>
+    <div class="stat-card" onclick="openModal('modal-connected-creators')">
+      <div class="stat-icon blue">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" fill="#3B82F6"/><circle cx="15" cy="7" r="3" fill="#3B82F6" fill-opacity="0.5"/><path d="M3 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/><path d="M15 13c2.21 0 4 1.79 4 4v2" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" fill-opacity="0.5"/></svg>
+      </div>
+      <div class="stat-num">28</div>
+      <div class="stat-label">Connected Creators</div>
+      <div class="stat-sub">+6 this month</div>
+    </div>
+    <div class="stat-card" onclick="openModal('modal-content-delivered')">
+      <div class="stat-icon green">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#00C896" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="#00C896" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="stat-num">116</div>
+      <div class="stat-label">Content Delivered</div>
+      <div class="stat-sub">92% on time</div>
+    </div>
+    <div class="stat-card" onclick="openModal('modal-rating-brand')">
+      <div class="stat-icon yellow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F6A623"/></svg>
+      </div>
+      <div class="stat-num">4.9</div>
+      <div class="stat-label">Average Rating</div>
+      <div class="stat-sub">from 86 collaborations</div>
+    </div>
+  </div>
+
+  <!-- Main Content Grid -->
+  <div style="display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start;">
+
+    <!-- Smart Matching -->
+    <div class="card" style="padding:28px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+        <div>
+          <p class="section-eyebrow">Smart Matching</p>
+          <h2 class="section-title">Recommended creators</h2>
+        </div>
+        <a href="explore.html" class="btn btn-ghost">View all</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" id="brand-creator-grid"></div>
+    </div>
+
+    <!-- Active Campaign Card -->
+    <div style="background:#0D1B2A;border-radius:var(--radius-l);padding:24px;color:#fff;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+        <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);">Featured Campaign</p>
+        <span class="badge badge-green">Active</span>
+      </div>
+      <h3 style="font-size:22px;font-weight:800;margin-bottom:6px;">Glow Up Ramadan</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:20px;">UGC skincare campaign · 12 creators</p>
+
+      <div style="margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:6px;">
+          <span>Campaign progress</span><span style="color:#fff;font-weight:700;">68%</span>
+        </div>
+        <div style="height:6px;border-radius:999px;background:rgba(255,255,255,0.12);">
+          <div style="height:100%;width:68%;border-radius:999px;background:var(--green);"></div>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;">
+          <span style="color:rgba(255,255,255,0.55);">Brief accepted</span>
+          <span style="font-weight:700;">12/12</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;">
+          <span style="color:rgba(255,255,255,0.55);">Content submitted</span>
+          <span style="font-weight:700;">8/12</span>
+        </div>
+      </div>
+
+      <a href="campaigns.html" class="btn btn-outline btn-sm" style="width:100%;margin-top:20px;color:#fff;border-color:rgba(255,255,255,0.2);display:flex;">
+        Manage Campaigns →
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Quick Links Row -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;">
+    <a href="chat.html" class="card" style="padding:20px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:box-shadow .18s;" onmouseover="this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.boxShadow=''">
+      <div class="stat-icon violet" style="margin-bottom:0;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#5B4FE8" stroke-width="2" fill="none"/></svg>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--ink);">Messages</div>
+        <div style="font-size:12px;color:var(--ink-3);">Chat with creators</div>
+      </div>
+      <span class="badge badge-red" style="margin-left:auto;">3 new</span>
+    </a>
+    <a href="ads.html" class="card" style="padding:20px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:box-shadow .18s;" onmouseover="this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.boxShadow=''">
+      <div class="stat-icon yellow" style="margin-bottom:0;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="#F6A623" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--ink);">Ads Manager</div>
+        <div style="font-size:12px;color:var(--ink-3);">Promote your brand</div>
+      </div>
+    </a>
+    <a href="explore.html" class="card" style="padding:20px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:box-shadow .18s;" onmouseover="this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.boxShadow=''">
+      <div class="stat-icon green" style="margin-bottom:0;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#00C896" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="#00C896" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--ink);">Explore Creators</div>
+        <div style="font-size:12px;color:var(--ink-3);">Browse all profiles</div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-active-campaigns">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Active Campaigns (4)</h3>
+      <button class="modal-close" onclick="closeModal('modal-active-campaigns')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="modal-list-item"><div class="modal-item-left"><h4>Glow Up Ramadan</h4><p>UGC Skincare · 12 creators</p></div><div class="modal-item-right"><div class="price">Rp 14.4M</div><div class="pct">68% complete</div></div></div>
+      <div class="modal-list-item"><div class="modal-item-left"><h4>Summer Refresh</h4><p>Product Review · 8 creators</p></div><div class="modal-item-right"><div class="price">Rp 8M</div><div class="pct">45% complete</div></div></div>
+      <div class="modal-list-item"><div class="modal-item-left"><h4>Morning Rituals</h4><p>Lifestyle Vlog · 6 creators</p></div><div class="modal-item-right"><div class="price">Rp 5.4M</div><div class="pct">90% complete</div></div></div>
+      <div class="modal-list-item"><div class="modal-item-left"><h4>Glow Skin Series</h4><p>Short-form · 4 creators</p></div><div class="modal-item-right"><div class="price">Rp 3.2M</div><div class="pct">20% complete</div></div></div>
+    </div>
+    <button class="modal-btn-full" onclick="window.location='campaigns.html'">Manage All Campaigns</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-connected-creators">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Connected Creators (28)</h3>
+      <button class="modal-close" onclick="closeModal('modal-connected-creators')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;" id="connected-creators-list"></div>
+    <p style="text-align:center;font-size:13px;color:var(--primary);margin-top:16px;cursor:pointer;" onclick="window.location='explore.html'">+22 more creators</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-content-delivered">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Content Delivered (116)</h3>
+      <button class="modal-close" onclick="closeModal('modal-content-delivered')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><span style="font-size:14px;font-weight:700;">UGC Video</span><span style="font-size:14px;font-weight:700;">48 pieces</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:41%;background:#5B4FE8;"></div></div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><span style="font-size:14px;font-weight:700;">Instagram Reels</span><span style="font-size:14px;font-weight:700;">32 pieces</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:28%;background:#E040FB;"></div></div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><span style="font-size:14px;font-weight:700;">TikTok Video</span><span style="font-size:14px;font-weight:700;">24 pieces</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:21%;background:#010101;"></div></div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><span style="font-size:14px;font-weight:700;">Story & Feed Post</span><span style="font-size:14px;font-weight:700;">12 pieces</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--green);"></div></div>
+      </div>
+    </div>
+    <div style="background:var(--green-light);border-radius:var(--radius-m);padding:16px;text-align:center;margin-top:16px;">
+      <span style="font-size:16px;font-weight:800;color:#059669;">92% delivered on time</span>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-rating-brand">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Average Rating (4.9)</h3>
+      <button class="modal-close" onclick="closeModal('modal-rating-brand')">×</button>
+    </div>
+    <div style="background:var(--yellow-light);border-radius:var(--radius-m);padding:24px;text-align:center;margin-bottom:20px;">
+      <div style="font-size:48px;font-weight:800;color:var(--ink);">4.9</div>
+      <div style="color:var(--yellow);font-size:24px;margin:4px 0;">★★★★★</div>
+      <div style="font-size:13px;color:var(--ink-3);">from 86 collaborations</div>
+    </div>
+    <div>
+      <div class="rating-bar-row"><span class="rating-bar-label">5★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:91%;"></div></div><span class="rating-bar-count">78</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">4★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:7%;"></div></div><span class="rating-bar-count">6</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">3★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%;"></div></div><span class="rating-bar-count">2</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">2★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">1★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Creator Modal -->
+<div class="modal-overlay" id="modal-add-creator">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Add Creator</h3>
+      <button class="modal-close" onclick="closeModal('modal-add-creator')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <input class="field" id="ac-name" placeholder="Name (e.g. Rani Anindita)">
+      <input class="field" id="ac-handle" placeholder="@handle">
+      <input class="field" id="ac-category" placeholder="Categories, comma-separated (e.g. Beauty, Lifestyle)">
+      <input class="field" id="ac-followers" type="number" placeholder="Followers (e.g. 24500)">
+      <input class="field" id="ac-er" type="number" step="0.1" placeholder="Engagement rate % (e.g. 6.8)">
+      <p id="ac-error" style="color:var(--red);font-size:13px;"></p>
+    </div>
+    <button class="modal-btn-full" onclick="submitCreator()">Save Creator</button>
+  </div>
+</div>
+
+<!-- Floating Buttons -->
+<button onclick="openModal('modal-add-creator')" style="position:fixed;bottom:28px;right:84px;height:44px;padding:0 18px;border-radius:999px;background:var(--primary);color:#fff;border:none;font-size:14px;font-weight:700;box-shadow:var(--shadow-lg);cursor:pointer;z-index:150;">+ Add Creator</button>
+<button class="fab-help" onclick="alert('Need help? Contact support@kawankonten.id')">?</button>
+
+<script src="shared.js"></script>
+<script>
+function renderBrandCreatorGrid() {
+  var grid = document.getElementById('brand-creator-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  creators.slice(0, 3).forEach(function(c) {
+    var card = document.createElement('div');
+    card.style.cssText = 'border-radius:16px;overflow:hidden;position:relative;cursor:pointer;';
+    card.innerHTML =
+      '<div style="aspect-ratio:3/4;position:relative;">' +
+        '<img src="' + c.img + '" alt="' + c.name + '" style="width:100%;height:100%;object-fit:cover;">' +
+        '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,transparent 50%);"></div>' +
+        '<div style="position:absolute;top:10px;left:10px;background:var(--green);color:#04241C;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;">✦ ' + c.match + '% Match</div>' +
+        '<div style="position:absolute;bottom:12px;left:12px;right:12px;">' +
+          '<div style="font-size:14px;font-weight:800;color:#fff;">' + c.name + '</div>' +
+          '<div style="font-size:11px;color:rgba(255,255,255,0.7);margin-top:2px;">' + c.followers + ' followers</div>' +
+        '</div>' +
+      '</div>';
+    card.onclick = function() { openModal('modal-connected-creators'); };
+    grid.appendChild(card);
+  });
+}
+
+function renderConnectedCreators() {
+  var list = document.getElementById('connected-creators-list');
+  if (!list) return;
+  connectedCreators.forEach(function(c) {
+    var item = document.createElement('div');
+    item.className = 'modal-list-item';
+    item.innerHTML =
+      '<div style="display:flex;align-items:center;gap:12px;">' +
+        '<img src="' + c.img + '" alt="' + c.name + '" style="width:42px;height:42px;border-radius:50%;object-fit:cover;">' +
+        '<div><div style="font-size:14px;font-weight:700;">' + c.name + '</div><div style="font-size:12px;color:var(--ink-3);">' + c.niche + '</div></div>' +
+      '</div>' +
+      '<div style="color:var(--yellow);font-weight:700;">★ ' + c.rating + '</div>';
+    list.appendChild(item);
+  });
+}
+
+async function submitCreator() {
+  var err = document.getElementById('ac-error');
+  err.textContent = '';
+  var body = {
+    name: document.getElementById('ac-name').value.trim(),
+    handle: document.getElementById('ac-handle').value.trim(),
+    category: document.getElementById('ac-category').value.split(',').map(function(s){ return s.trim(); }).filter(Boolean),
+    followers: Number(document.getElementById('ac-followers').value),
+    engagementRate: Number(document.getElementById('ac-er').value)
+  };
+  try {
+    await submitCreatorToAPI(body);
+    closeModal('modal-add-creator');
+    await loadCreatorsFromAPI();
+    renderBrandCreatorGrid();
+  } catch(e) {
+    err.textContent = e.message || 'Could not reach the server.';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderBrandCreatorGrid();
+  renderConnectedCreators();
+  loadCreatorsFromAPI().then(renderBrandCreatorGrid);
+});
+</script>
+</body>
+</html>

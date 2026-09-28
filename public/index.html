@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KawanKonten — Where Brands Meet Creators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  body { min-height: 100vh; }
+  .hero-bg {
+    min-height: calc(100vh - 64px);
+    background: linear-gradient(160deg, #EEF0FF 0%, #F0F2F8 50%, #E8F5F1 100%);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 48px 40px;
+  }
+  .role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .role-card {
+    border-radius: 24px; overflow: hidden; position: relative;
+    min-height: 380px; display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 32px;
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer; border: none; text-align: left;
+    background: #1a1a2e;
+  }
+  .role-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.3); }
+  .role-card-cover {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover; opacity: 0.35;
+  }
+  .role-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(160deg, rgba(10,10,30,0.5) 0%, rgba(10,10,30,0.92) 100%);
+  }
+  .role-card-icon {
+    position: absolute; top: 28px; left: 28px;
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .role-card-body { position: relative; z-index: 1; }
+  .role-card-eyebrow {
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .role-card-title {
+    font-size: 28px; font-weight: 800; color: #fff;
+    margin-bottom: 12px; letter-spacing: -0.02em;
+  }
+  .role-card-desc {
+    font-size: 14px; color: rgba(255,255,255,0.65);
+    line-height: 1.6; margin-bottom: 28px;
+  }
+  .role-card-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; font-size: 14px; font-weight: 700;
+    padding: 13px 24px; border-radius: 999px;
+  }
+  .stats-row {
+    display: flex; gap: 36px; justify-content: center;
+    margin-top: 48px; flex-wrap: wrap;
+  }
+  .stats-item { text-align: center; }
+  .stats-num { font-size: 28px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+  .stats-label { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+  @media (max-width: 640px) {
+    .role-grid { grid-template-columns: 1fr; }
+    .hero-bg { padding: 32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+      </div>
+      <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+    </a>
+    <span class="nav-tagline"><strong>The right collaboration starts here.</strong></span>
+    <div class="nav-right">
+      <a href="explore.html" class="btn btn-outline btn-sm">Explore</a>
+      <a href="ads.html" class="btn btn-primary btn-sm">Run Ads</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-bg">
+  <div style="text-align:center; max-width:960px; width:100%;">
+    <!-- Pill -->
+    <div style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);border-radius:999px;padding:8px 18px;font-size:12px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:28px;">
+      <span>✦</span> Welcome to KawanKonten
+    </div>
+
+    <!-- Headline -->
+    <h1 style="font-size:clamp(38px,6vw,64px);font-weight:800;letter-spacing:-0.03em;color:var(--ink);line-height:1.08;margin-bottom:16px;">
+      You are here as a…
+    </h1>
+    <p style="font-size:16px;color:var(--ink-3);margin-bottom:48px;line-height:1.6;max-width:520px;margin-left:auto;margin-right:auto;">
+      Choose your role so we can tailor the experience, recommendations, and features that fit you best.
+    </p>
+
+    <!-- Role Cards -->
+    <div class="role-grid">
+      <!-- Brand -->
+      <a href="brand.html" class="role-card" style="background:#1a1a2e;">
+        <img class="role-card-cover" src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&h=400&fit=crop" alt="">
+        <div class="role-card-overlay"></div>
+        <div class="role-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="12" width="4" height="9" rx="1" fill="white"/>
+            <rect x="10" y="7" width="4" height="14" rx="1" fill="white"/>
+            <rect x="17" y="3" width="4" height="18" rx="1" fill="white"/>
+          </svg>
+        </div>
+        <div class="role-card-body">
+          <p class="role-card-eyebrow" style="color:var(--green);">I'm a Brand</p>
+          <h2 class="role-card-title">Find the right creator</h2>
+          <p class="role-card-desc">Discover talent, review media kits, and launch campaigns that match your target audience and budget.</p>
+          <span class="role-card-cta" style="color:var(--ink);">Enter as Brand →</span>
+        </div>
+      </a>
+
+      <!-- Creator -->
+      <a href="creator.html" class="role-card" style="background:linear-gradient(160deg,#6C63FF,#4F46E5);">
+        <img class="role-card-cover" src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=400&fit=crop" alt="" style="opacity:0.3;">
+        <div class="role-card-overlay" style="background:linear-gradient(160deg,rgba(79,70,229,0.55),rgba(79,70,229,0.92));"></div>
+        <div class="role-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="8" height="8" rx="2" fill="white"/>
+            <rect x="13" y="3" width="8" height="8" rx="2" fill="white" fill-opacity="0.6"/>
+            <rect x="3" y="13" width="8" height="8" rx="2" fill="white" fill-opacity="0.6"/>
+            <circle cx="17" cy="17" r="4" fill="white"/>
+          </svg>
+        </div>
+        <div class="role-card-body">
+          <p class="role-card-eyebrow" style="color:rgba(255,255,255,0.8);">I'm a Creator</p>
+          <h2 class="role-card-title">Grow your creative career</h2>
+          <p class="role-card-desc">Showcase your best work, set your rate card, and land collaborations with your dream brands.</p>
+          <span class="role-card-cta" style="color:var(--primary);">Enter as Creator →</span>
+        </div>
+      </a>
+    </div>
+
+    <p style="margin-top:24px;font-size:13px;color:var(--ink-4);">You can switch roles anytime from your dashboard.</p>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+      <div class="stats-item">
+        <div class="stats-num">12K+</div>
+        <div class="stats-label">Active Creators</div>
+      </div>
+      <div class="stats-item" style="border-left:1px solid var(--border);padding-left:36px;">
+        <div class="stats-num">3.4K+</div>
+        <div class="stats-label">Brand Partners</div>
+      </div>
+      <div class="stats-item" style="border-left:1px solid var(--border);padding-left:36px;">
+        <div class="stats-num">48K+</div>
+        <div class="stats-label">Campaigns Completed</div>
+      </div>
+      <div class="stats-item" style="border-left:1px solid var(--border);padding-left:36px;">
+        <div class="stats-num">4.9★</div>
+        <div class="stats-label">Average Rating</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HELP -->
+<button class="fab-help" onclick="alert('Need help? Contact support@kawankonten.id')">?</button>
+
+</body>
+</html>

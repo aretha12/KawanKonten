@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KawanKonten — Explore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+      </div>
+      <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="brand.html">Brand Dashboard</a>
+      <a href="creator.html">Creator Dashboard</a>
+      <a href="explore.html" class="active">Explore</a>
+      <a href="ads.html">Ads</a>
+      <a href="chat.html">Messages</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html" class="mode-pill">
+        <span class="mode-dot"></span> Explore Mode
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:36px;padding-bottom:48px;">
+
+  <!-- Page Header -->
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:16px;">
+    <div>
+      <p class="section-eyebrow">✦ Browse All</p>
+      <h1 style="font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px;">Explore Creators & Brands</h1>
+      <p style="font-size:14px;color:var(--ink-3);">Discover creators and brands currently open for collaboration.</p>
+    </div>
+    <!-- Tab Toggle -->
+    <div style="display:flex;background:var(--bg);border:1px solid var(--border);border-radius:999px;padding:4px;gap:4px;">
+      <button class="chip-filter active" id="tab-creator" onclick="switchTab('creator')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:4px;"><circle cx="12" cy="7" r="4" fill="currentColor"/><path d="M4 19c0-4 3.582-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        Creators
+      </button>
+      <button class="chip-filter" id="tab-brand" onclick="switchTab('brand')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:4px;"><rect x="3" y="7" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/><path d="M8 7V5a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="2"/></svg>
+        Brands
+      </button>
+    </div>
+  </div>
+
+  <!-- Search & Filters -->
+  <div style="margin-bottom:20px;">
+    <div style="position:relative;margin-bottom:14px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);"><circle cx="11" cy="11" r="7" stroke="#6B7280" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="#6B7280" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="search-input" type="text" placeholder="Search by name, niche, or keyword…" oninput="renderExplore()"
+        style="width:100%;padding:14px 16px 14px 44px;border:1.5px solid var(--border);border-radius:var(--radius-m);font-size:14px;font-family:inherit;background:#fff;color:var(--ink);outline:none;"
+        onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+      <select id="filter-niche" onchange="renderExplore()" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:999px;font-size:13px;font-weight:600;font-family:inherit;background:#fff;color:var(--ink-2);cursor:pointer;outline:none;">
+        <option value="">All Niches</option>
+        <option>Beauty &amp; Skincare</option>
+        <option>F&amp;B / Coffee</option>
+        <option>Fashion &amp; Lifestyle</option>
+        <option>Tech &amp; Productivity</option>
+        <option>Wellness &amp; Fitness</option>
+        <option>Gaming &amp; Tech</option>
+        <option>Food &amp; Lifestyle</option>
+        <option>Fashion &amp; Travel</option>
+      </select>
+      <select id="filter-followers" onchange="renderExplore()" class="creator-only" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:999px;font-size:13px;font-weight:600;font-family:inherit;background:#fff;color:var(--ink-2);cursor:pointer;outline:none;">
+        <option value="">All Sizes</option>
+        <option>Nano (1K–10K)</option>
+        <option>Micro (10K–100K)</option>
+        <option>Mid (100K–500K)</option>
+      </select>
+      <button class="btn btn-dark btn-sm">⊞ More Filters</button>
+    </div>
+  </div>
+
+  <!-- Sort Tabs (creator only) -->
+  <div id="sort-row" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:24px;justify-content:space-between;">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="chip-filter active" id="sort-all"     onclick="setSort('All',this)">All</button>
+      <button class="chip-filter"        id="sort-match"   onclick="setSort('Best Match',this)">Best Match</button>
+      <button class="chip-filter"        id="sort-rated"   onclick="setSort('Top Rated',this)">Top Rated</button>
+      <button class="chip-filter"        id="sort-relevant" onclick="setSort('Most Relevant',this)">Most Relevant</button>
+      <button class="chip-filter"        id="sort-lowest"  onclick="setSort('Lowest Rate',this)">Lowest Rate</button>
+    </div>
+    <span id="result-count" style="font-size:13px;color:var(--ink-3);font-weight:600;"></span>
+  </div>
+
+  <!-- Results Grid -->
+  <div id="explore-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
+
+</div>
+
+<!-- Creator Profile Modal -->
+<div class="modal-overlay" id="modal-creator-profile">
+  <div class="modal" style="max-width:480px;">
+    <div class="modal-header">
+      <h3 id="modal-creator-name">Creator Name</h3>
+      <button class="modal-close" onclick="closeModal('modal-creator-profile')">×</button>
+    </div>
+    <div id="modal-creator-body"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;">
+      <a href="chat.html" class="btn btn-outline" style="justify-content:center;">Message</a>
+      <button class="modal-btn-full" style="margin-top:0;" onclick="closeModal('modal-creator-profile')">Invite to Campaign</button>
+    </div>
+  </div>
+</div>
+
+<button class="fab-help" onclick="alert('Need help? Contact support@kawankonten.id')">?</button>
+
+<script src="shared.js"></script>
+<script>
+var activeTab  = 'creator';
+var sortMode   = 'All';
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.getElementById('tab-creator').classList.toggle('active', tab === 'creator');
+  document.getElementById('tab-brand').classList.toggle('active', tab === 'brand');
+  var followersEl = document.querySelector('.creator-only');
+  if (followersEl) followersEl.style.display = tab === 'creator' ? '' : 'none';
+  document.getElementById('sort-row').style.display = tab === 'creator' ? '' : 'none';
+  document.getElementById('search-input').value = '';
+  document.getElementById('filter-niche').value = '';
+  renderExplore();
+}
+
+function setSort(mode, btn) {
+  sortMode = mode;
+  document.querySelectorAll('#sort-row .chip-filter').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderExplore();
+}
+
+function openCreatorProfile(c) {
+  document.getElementById('modal-creator-name').textContent = c.name;
+  document.getElementById('modal-creator-body').innerHTML =
+    '<div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">' +
+      '<img src="' + c.img + '" style="width:72px;height:72px;border-radius:50%;object-fit:cover;">' +
+      '<div><p style="font-size:13px;color:var(--ink-3);">' + c.handle + '</p><p style="font-size:13px;font-weight:600;">' + c.niche + '</p></div>' +
+      '<div style="margin-left:auto;text-align:right;"><div style="font-size:20px;font-weight:800;color:var(--primary);">' + c.match + '% Match</div><div style="color:var(--yellow);">★ ' + c.rating + '</div></div>' +
+    '</div>' +
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">' +
+      '<div style="background:var(--bg);border-radius:var(--radius-s);padding:14px;text-align:center;"><div style="font-size:18px;font-weight:800;">' + c.followers + '</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;margin-top:2px;">Followers</div></div>' +
+      '<div style="background:var(--bg);border-radius:var(--radius-s);padding:14px;text-align:center;"><div style="font-size:18px;font-weight:800;">' + c.rate + '</div><div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;margin-top:2px;">Rate / Video</div></div>' +
+    '</div>';
+  openModal('modal-creator-profile');
+}
+
+function renderExplore() {
+  var grid     = document.getElementById('explore-grid');
+  var countEl  = document.getElementById('result-count');
+  var search   = document.getElementById('search-input').value.toLowerCase();
+  var niche    = document.getElementById('filter-niche').value;
+  if (!grid) return;
+
+  if (activeTab === 'creator') {
+    var list = creators.filter(function(c) {
+      var ms = !search || c.name.toLowerCase().includes(search) || c.niche.toLowerCase().includes(search) || c.handle.toLowerCase().includes(search);
+      var mn = !niche  || c.niche === niche;
+      return ms && mn;
+    });
+    if (sortMode === 'Top Rated')     list.sort(function(a,b){ return b.rating - a.rating; });
+    else if (sortMode === 'Best Match')    list.sort(function(a,b){ return b.match - a.match; });
+    else if (sortMode === 'Lowest Rate')   list.sort(function(a,b){ return a.rateRaw - b.rateRaw; });
+    else if (sortMode === 'Most Relevant') list.sort(function(a,b){ return b.followersRaw - a.followersRaw; });
+    if (countEl) countEl.textContent = list.length + ' creator' + (list.length !== 1 ? 's' : '');
+    grid.innerHTML = '';
+    list.forEach(function(c) {
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.style.cssText = 'overflow:hidden;cursor:pointer;transition:transform .18s,box-shadow .18s;';
+      card.innerHTML =
+        '<div style="position:relative;aspect-ratio:3/4;">' +
+          '<img src="' + c.img + '" alt="' + c.name + '" style="width:100%;height:100%;object-fit:cover;">' +
+          '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 55%);"></div>' +
+          '<div style="position:absolute;top:10px;left:10px;background:var(--green);color:#04241C;font-size:11px;font-weight:800;padding:4px 10px;border-radius:999px;">✦ ' + c.match + '% Match</div>' +
+          '<div style="position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="#374151" stroke-width="2" fill="none"/></svg></div>' +
+          '<div style="position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,0.5);color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:999px;">' + c.followers + '</div>' +
+        '</div>' +
+        '<div style="padding:14px 16px;">' +
+          '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;">' +
+            '<h4 style="font-size:15px;font-weight:800;color:var(--ink);">' + c.name + '</h4>' +
+            '<span style="color:var(--yellow);font-size:13px;">★ ' + c.rating + '</span>' +
+          '</div>' +
+          '<p style="font-size:12px;color:var(--ink-3);">' + c.niche + '</p>' +
+          '<p style="font-size:12px;color:var(--ink-2);font-weight:600;margin-top:6px;">' + c.rate + '</p>' +
+        '</div>';
+      card.onmouseover = function(){ this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-lg)'; };
+      card.onmouseout  = function(){ this.style.transform='';this.style.boxShadow=''; };
+      card.onclick = function(){ openCreatorProfile(c); };
+      grid.appendChild(card);
+    });
+
+  } else {
+    // Brand tab
+    var blist = brands.filter(function(b) {
+      var ms = !search || b.name.toLowerCase().includes(search) || b.niche.toLowerCase().includes(search);
+      var mn = !niche  || b.niche === niche;
+      return ms && mn;
+    });
+    if (countEl) countEl.textContent = blist.length + ' brand' + (blist.length !== 1 ? 's' : '');
+    grid.innerHTML = '';
+    blist.forEach(function(b) {
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.style.cssText = 'padding:20px;cursor:pointer;transition:transform .18s,box-shadow .18s;position:relative;';
+      card.innerHTML =
+        (b.active ? '<span class="badge badge-green" style="position:absolute;top:16px;right:16px;">Recruiting</span>' : '') +
+        '<div style="width:56px;height:56px;border-radius:14px;background:' + b.color + ';color:' + b.textColor + ';display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin-bottom:16px;">' + b.letter + '</div>' +
+        '<h4 style="font-size:17px;font-weight:800;color:var(--ink);margin-bottom:2px;">' + b.name + ' <span style="color:var(--yellow);font-size:13px;">★ ' + b.rating + '</span></h4>' +
+        '<p style="font-size:12px;color:var(--ink-3);margin-bottom:8px;">' + b.niche + '</p>' +
+        '<p style="font-size:13px;color:var(--ink-2);line-height:1.5;margin-bottom:16px;">' + b.desc + '</p>' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border);">' +
+          '<div>' +
+            '<div style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;">' + b.campaigns + ' Campaigns Completed</div>' +
+            '<div style="font-size:13px;font-weight:700;color:var(--ink-2);">' + b.rateRange + '</div>' +
+          '</div>' +
+          '<a href="chat.html" class="btn btn-outline btn-sm" onclick="event.stopPropagation()">Message</a>' +
+        '</div>';
+      card.onmouseover = function(){ this.style.transform='translateY(-3px)';this.style.boxShadow='var(--shadow-lg)'; };
+      card.onmouseout  = function(){ this.style.transform='';this.style.boxShadow=''; };
+      grid.appendChild(card);
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderExplore();
+  loadCreatorsFromAPI().then(renderExplore);
+});
+</script>
+</body>
+</html>

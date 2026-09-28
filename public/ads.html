@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KawanKonten — Ads Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .ad-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    transition: box-shadow .18s, transform .18s;
+    cursor: pointer;
+  }
+  .ad-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .plan-card {
+    border: 2px solid var(--border);
+    border-radius: var(--radius-l);
+    padding: 28px;
+    transition: border-color .18s, box-shadow .18s;
+    cursor: pointer;
+    position: relative;
+  }
+  .plan-card:hover { border-color: var(--primary); box-shadow: var(--shadow-lg); }
+  .plan-card.popular { border-color: var(--primary); }
+  .plan-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--primary); color: #fff;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; padding: 4px 14px; border-radius: 999px;
+  }
+  .metric-pill {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg); border-radius: var(--radius-s); padding: 12px 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+      </div>
+      <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="brand.html">Brand Dashboard</a>
+      <a href="creator.html">Creator Dashboard</a>
+      <a href="explore.html">Explore</a>
+      <a href="ads.html" class="active">Ads</a>
+      <a href="chat.html">Messages</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html" class="mode-pill">
+        <span class="mode-dot"></span> Ads Manager
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap" style="padding-top:36px;padding-bottom:48px;">
+
+  <!-- Page Header -->
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:16px;">
+    <div>
+      <p class="section-eyebrow">Advertising</p>
+      <h1 style="font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px;">Ads Manager</h1>
+      <p style="font-size:14px;color:var(--ink-3);">Promote your brand or creator profile to reach more collaborators.</p>
+    </div>
+    <button class="btn btn-primary btn-lg" onclick="openModal('modal-create-ad')">+ Create New Ad</button>
+  </div>
+
+  <!-- Overview Stats -->
+  <div class="stat-grid" style="margin-bottom:32px;">
+    <div class="stat-card">
+      <div class="stat-icon violet"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="#5B4FE8" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="3" stroke="#5B4FE8" stroke-width="2"/></svg></div>
+      <div class="stat-num">48.2K</div>
+      <div class="stat-label">Total Impressions</div>
+      <div class="stat-sub" style="color:var(--green);">+12% this week</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon blue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="stat-num">3.8K</div>
+      <div class="stat-label">Total Clicks</div>
+      <div class="stat-sub">7.9% click-through rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon green"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#00C896" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#00C896" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#00C896" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div class="stat-num">284</div>
+      <div class="stat-label">New Profile Visits</div>
+      <div class="stat-sub">from ads this month</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon yellow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="12" y1="1" x2="12" y2="23" stroke="#F6A623" stroke-width="2" stroke-linecap="round"/><path d="M17 5H9.5a3.5 3.5 0 1 0 0 7h5a3.5 3.5 0 1 1 0 7H6" stroke="#F6A623" stroke-width="2" stroke-linecap="round"/></svg></div>
+      <div class="stat-num">Rp 1.2M</div>
+      <div class="stat-label">Total Ad Spend</div>
+      <div class="stat-sub">Rp 315 avg. per click</div>
+    </div>
+  </div>
+
+  <!-- Active Ads -->
+  <div style="margin-bottom:40px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+      <div>
+        <p class="section-eyebrow">Running Now</p>
+        <h2 class="section-title" style="font-size:22px;">Active Ads</h2>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="chip-filter active" onclick="filterAds('All',this)">All</button>
+        <button class="chip-filter" onclick="filterAds('Brand',this)">Brand Ads</button>
+        <button class="chip-filter" onclick="filterAds('Creator',this)">Creator Ads</button>
+      </div>
+    </div>
+
+    <div id="ads-list" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;"></div>
+  </div>
+
+  <!-- Pricing Plans -->
+  <div>
+    <div style="text-align:center;margin-bottom:32px;">
+      <p class="section-eyebrow">Pricing</p>
+      <h2 class="section-title">Choose your boost plan</h2>
+      <p style="font-size:14px;color:var(--ink-3);margin-top:8px;">All plans include detailed analytics and real-time performance tracking.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:860px;margin:0 auto;">
+
+      <!-- Starter -->
+      <div class="plan-card" onclick="openModal('modal-create-ad')">
+        <p style="font-size:14px;font-weight:700;color:var(--ink-3);margin-bottom:8px;">Starter</p>
+        <div style="font-size:36px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;margin-bottom:4px;">Rp 150K</div>
+        <div style="font-size:13px;color:var(--ink-3);margin-bottom:24px;">/ 7 days</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> Up to 5K impressions</li>
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> Explore page placement</li>
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> Basic analytics</li>
+          <li style="font-size:13px;color:var(--ink-4);display:flex;align-items:center;gap:8px;"><span style="color:var(--border);font-weight:700;">✕</span> Priority placement</li>
+        </ul>
+        <button class="btn btn-outline" style="width:100%;">Get Started</button>
+      </div>
+
+      <!-- Growth (popular) -->
+      <div class="plan-card popular" onclick="openModal('modal-create-ad')">
+        <div class="plan-badge">Most Popular</div>
+        <p style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:8px;">Growth</p>
+        <div style="font-size:36px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;margin-bottom:4px;">Rp 400K</div>
+        <div style="font-size:13px;color:var(--ink-3);margin-bottom:24px;">/ 14 days</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> Up to 20K impressions</li>
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> Homepage + Explore placement</li>
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> Full analytics dashboard</li>
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> Priority placement</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%;">Choose Growth</button>
+      </div>
+
+      <!-- Pro -->
+      <div class="plan-card" onclick="openModal('modal-create-ad')">
+        <p style="font-size:14px;font-weight:700;color:var(--ink-3);margin-bottom:8px;">Pro</p>
+        <div style="font-size:36px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;margin-bottom:4px;">Rp 900K</div>
+        <div style="font-size:13px;color:var(--ink-3);margin-bottom:24px;">/ 30 days</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px;">
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> Unlimited impressions</li>
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> All placements + email blast</li>
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> A/B testing</li>
+          <li style="font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px;"><span style="color:var(--green);font-weight:700;">✓</span> Dedicated account manager</li>
+        </ul>
+        <button class="btn btn-dark" style="width:100%;">Go Pro</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Create Ad Modal -->
+<div class="modal-overlay" id="modal-create-ad">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Create New Ad</h3>
+      <button class="modal-close" onclick="closeModal('modal-create-ad')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div>
+        <label class="field-label">Ad Type</label>
+        <select class="field" id="ad-type" onchange="toggleAdType()">
+          <option value="brand">Brand Ad — promote your brand to creators</option>
+          <option value="creator">Creator Ad — promote your profile to brands</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label">Ad Title</label>
+        <input class="field" id="ad-title" placeholder="e.g. Lumera Beauty – Now Recruiting Creators">
+      </div>
+      <div>
+        <label class="field-label">Short Description</label>
+        <textarea class="field" id="ad-desc" rows="3" placeholder="One or two sentences about what you're offering…"></textarea>
+      </div>
+      <div>
+        <label class="field-label">Target Niche</label>
+        <select class="field">
+          <option value="">All Niches (broader reach)</option>
+          <option>Beauty &amp; Skincare</option>
+          <option>Food &amp; Lifestyle</option>
+          <option>Fashion &amp; Travel</option>
+          <option>Tech &amp; Productivity</option>
+          <option>Wellness &amp; Fitness</option>
+          <option>Gaming &amp; Tech</option>
+        </select>
+      </div>
+      <div>
+        <label class="field-label">Select Plan</label>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+          <label style="border:1.5px solid var(--border);border-radius:var(--radius-s);padding:12px;text-align:center;cursor:pointer;transition:border-color .15s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+            <input type="radio" name="plan" value="starter" style="display:none;">
+            <div style="font-size:13px;font-weight:700;">Starter</div>
+            <div style="font-size:12px;color:var(--ink-3);">Rp 150K / 7d</div>
+          </label>
+          <label style="border:2px solid var(--primary);border-radius:var(--radius-s);padding:12px;text-align:center;cursor:pointer;" >
+            <input type="radio" name="plan" value="growth" checked style="display:none;">
+            <div style="font-size:13px;font-weight:700;color:var(--primary);">Growth</div>
+            <div style="font-size:12px;color:var(--ink-3);">Rp 400K / 14d</div>
+          </label>
+          <label style="border:1.5px solid var(--border);border-radius:var(--radius-s);padding:12px;text-align:center;cursor:pointer;transition:border-color .15s;" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+            <input type="radio" name="plan" value="pro" style="display:none;">
+            <div style="font-size:13px;font-weight:700;">Pro</div>
+            <div style="font-size:12px;color:var(--ink-3);">Rp 900K / 30d</div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <button class="modal-btn-full" onclick="submitAd()">Launch Ad →</button>
+  </div>
+</div>
+
+<!-- Ad Detail Modal -->
+<div class="modal-overlay" id="modal-ad-detail">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="detail-title">Ad Details</h3>
+      <button class="modal-close" onclick="closeModal('modal-ad-detail')">×</button>
+    </div>
+    <div id="detail-body"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;">
+      <button class="btn btn-outline" onclick="closeModal('modal-ad-detail')">Pause Ad</button>
+      <button class="modal-btn-full" style="margin-top:0;" onclick="closeModal('modal-ad-detail')">Extend Ad</button>
+    </div>
+  </div>
+</div>
+
+<button class="fab-help" onclick="alert('Need help? Contact support@kawankonten.id')">?</button>
+
+<script src="shared.js"></script>
+<script>
+var adsData = [
+  {id:1,type:'Brand',title:'Lumera Beauty — Now Recruiting Creators',desc:'We\'re looking for beauty & skincare creators for our upcoming summer campaign.',niche:'Beauty & Skincare',plan:'Growth',impressions:18400,clicks:1420,ctr:7.7,spend:'Rp 400K',daysLeft:9,status:'Active',color:'#FECACA',textColor:'#DC2626',letter:'L'},
+  {id:2,type:'Creator',title:'Nadya Putri — Open for Collabs',desc:'Beauty & skincare UGC creator. 134K followers. 6.5% engagement. DM me!',niche:'Beauty & Skincare',plan:'Starter',impressions:6800,clicks:540,ctr:7.9,spend:'Rp 150K',daysLeft:3,status:'Active',color:'#EDE9FE',textColor:'#7C3AED',letter:'N'},
+  {id:3,type:'Brand',title:'Verdana Sport — Fitness Creators Wanted',desc:'Sports & active lifestyle campaign launching next month. Apply now.',niche:'Wellness & Fitness',plan:'Pro',impressions:23000,clicks:1860,ctr:8.1,spend:'Rp 900K',daysLeft:22,status:'Active',color:'#D1FAE5',textColor:'#059669',letter:'V'},
+  {id:4,type:'Creator',title:'Raka Pradana — Food & Lifestyle Collab',desc:'Food blogger & lifestyle content creator. 36.8K followers. Authentic storytelling.',niche:'Food & Lifestyle',plan:'Growth',impressions:9200,clicks:720,ctr:7.8,spend:'Rp 400K',daysLeft:11,status:'Active',color:'#FEF3C7',textColor:'#D97706',letter:'R'}
+];
+
+var activeAdFilter = 'All';
+
+function filterAds(filter, btn) {
+  activeAdFilter = filter;
+  document.querySelectorAll('.chip-filter').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  renderAds();
+}
+
+function renderAds() {
+  var list = document.getElementById('ads-list');
+  if (!list) return;
+  var filtered = adsData.filter(function(a) {
+    return activeAdFilter === 'All' ||
+      (activeAdFilter === 'Brand' && a.type === 'Brand') ||
+      (activeAdFilter === 'Creator' && a.type === 'Creator');
+  });
+  list.innerHTML = '';
+  filtered.forEach(function(ad) {
+    var card = document.createElement('div');
+    card.className = 'ad-card';
+    card.innerHTML =
+      '<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;">' +
+          '<div style="width:44px;height:44px;border-radius:12px;background:' + ad.color + ';color:' + ad.textColor + ';display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0;">' + ad.letter + '</div>' +
+          '<div>' +
+            '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin-bottom:2px;">' + ad.type + ' Ad · ' + ad.plan + '</div>' +
+            '<div style="font-size:15px;font-weight:700;color:var(--ink);">' + ad.title + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<span class="badge badge-green" style="flex-shrink:0;">' + ad.daysLeft + 'd left</span>' +
+      '</div>' +
+      '<p style="font-size:13px;color:var(--ink-3);line-height:1.5;margin-bottom:16px;">' + ad.desc + '</p>' +
+      '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;">' +
+        '<div class="metric-pill"><span style="font-size:12px;color:var(--ink-3);">Impressions</span><span style="font-size:13px;font-weight:700;">' + (ad.impressions/1000).toFixed(1) + 'K</span></div>' +
+        '<div class="metric-pill"><span style="font-size:12px;color:var(--ink-3);">Clicks</span><span style="font-size:13px;font-weight:700;">' + (ad.clicks/1000).toFixed(1) + 'K</span></div>' +
+        '<div class="metric-pill"><span style="font-size:12px;color:var(--ink-3);">CTR</span><span style="font-size:13px;font-weight:700;color:var(--green);">' + ad.ctr + '%</span></div>' +
+      '</div>' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;">' +
+        '<span style="font-size:12px;color:var(--ink-3);">Spend: <strong style="color:var(--ink);">' + ad.spend + '</strong></span>' +
+        '<span style="font-size:12px;color:var(--ink-3);">Niche: <strong style="color:var(--ink);">' + ad.niche + '</strong></span>' +
+      '</div>';
+    card.onclick = function() { openAdDetail(ad); };
+    list.appendChild(card);
+  });
+}
+
+function openAdDetail(ad) {
+  document.getElementById('detail-title').textContent = ad.title;
+  document.getElementById('detail-body').innerHTML =
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;">' +
+      '<div class="metric-pill" style="flex-direction:column;align-items:flex-start;gap:4px;"><span style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Impressions</span><span style="font-size:22px;font-weight:800;">' + ad.impressions.toLocaleString() + '</span></div>' +
+      '<div class="metric-pill" style="flex-direction:column;align-items:flex-start;gap:4px;"><span style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Clicks</span><span style="font-size:22px;font-weight:800;">' + ad.clicks.toLocaleString() + '</span></div>' +
+      '<div class="metric-pill" style="flex-direction:column;align-items:flex-start;gap:4px;"><span style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">CTR</span><span style="font-size:22px;font-weight:800;color:var(--green);">' + ad.ctr + '%</span></div>' +
+      '<div class="metric-pill" style="flex-direction:column;align-items:flex-start;gap:4px;"><span style="font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:0.04em;">Total Spend</span><span style="font-size:22px;font-weight:800;">' + ad.spend + '</span></div>' +
+    '</div>' +
+    '<div class="metric-pill" style="margin-bottom:12px;"><span style="font-size:13px;color:var(--ink-3);">Plan</span><span class="badge badge-violet">' + ad.plan + '</span></div>' +
+    '<div class="metric-pill" style="margin-bottom:12px;"><span style="font-size:13px;color:var(--ink-3);">Days remaining</span><span style="font-size:13px;font-weight:700;">' + ad.daysLeft + ' days</span></div>' +
+    '<div class="metric-pill"><span style="font-size:13px;color:var(--ink-3);">Target niche</span><span style="font-size:13px;font-weight:700;">' + ad.niche + '</span></div>';
+  openModal('modal-ad-detail');
+}
+
+function submitAd() {
+  var title = document.getElementById('ad-title').value.trim();
+  if (!title) { alert('Please enter an ad title.'); return; }
+  closeModal('modal-create-ad');
+  alert('Your ad has been submitted for review and will go live within 24 hours.');
+}
+
+document.addEventListener('DOMContentLoaded', renderAds);
+</script>
+</body>
+</html>

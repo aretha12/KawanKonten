@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KawanKonten — Creator Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white" fill-opacity="0.2"/><path d="M8 12C8 9.79 9.79 8 12 8s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4z" fill="white"/><circle cx="17" cy="7" r="2" fill="#00C896"/></svg>
+      </div>
+      <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="creator.html" class="active">Dashboard</a>
+      <a href="media-kit.html">My Media Kit</a>
+      <a href="explore.html">Explore</a>
+      <a href="ads.html">Ads</a>
+      <a href="chat.html">Messages</a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html" class="mode-pill">
+        <span class="mode-dot"></span> Creator Mode
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Banner -->
+<div style="background:linear-gradient(135deg,#0D1B2A 0%,#1E1B4B 100%);color:#fff;padding:32px 0;">
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Nadya" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,0.3);">
+        <div style="position:absolute;bottom:2px;right:2px;width:16px;height:16px;border-radius:50%;background:var(--green);border:2px solid #0D1B2A;"></div>
+      </div>
+      <div>
+        <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);margin-bottom:4px;">Creator Workspace</p>
+        <h1 style="font-size:28px;font-weight:800;letter-spacing:-0.02em;margin-bottom:4px;">Hey, Nadya!</h1>
+        <p style="font-size:13px;color:rgba(255,255,255,0.6);">Your profile was viewed by 12 brands this week.</p>
+      </div>
+    </div>
+    <a href="media-kit.html" class="btn" style="background:#fff;color:var(--ink);border-radius:999px;">View My Media Kit</a>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top:28px;padding-bottom:48px;">
+
+  <!-- Stat Cards -->
+  <div class="stat-grid" style="margin-bottom:28px;">
+    <div class="stat-card" onclick="openModal('modal-earnings')">
+      <div class="stat-icon green">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="12" width="4" height="9" rx="1" fill="#00C896"/><rect x="10" y="7" width="4" height="14" rx="1" fill="#00C896"/><rect x="17" y="3" width="4" height="18" rx="1" fill="#00C896"/></svg>
+      </div>
+      <div class="stat-num" style="font-size:22px;">Rp 8.4M</div>
+      <div class="stat-label">Earnings This Month</div>
+      <div class="stat-sub" style="color:var(--green);">+18% vs last month</div>
+    </div>
+    <div class="stat-card" onclick="openModal('modal-active-campaigns')">
+      <div class="stat-icon violet">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" fill="#5B4FE8"/><rect x="13" y="3" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/><rect x="3" y="13" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#5B4FE8" fill-opacity="0.4"/></svg>
+      </div>
+      <div class="stat-num">03</div>
+      <div class="stat-label">Active Campaigns</div>
+      <div class="stat-sub">2 awaiting content</div>
+    </div>
+    <div class="stat-card" onclick="openModal('modal-profile-views')">
+      <div class="stat-icon blue">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" fill="#3B82F6"/><circle cx="15" cy="7" r="3" fill="#3B82F6" fill-opacity="0.5"/><path d="M3 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"/></svg>
+      </div>
+      <div class="stat-num">1.2K</div>
+      <div class="stat-label">Profile Views</div>
+      <div class="stat-sub">+164 this week</div>
+    </div>
+    <div class="stat-card" onclick="openModal('modal-rating')">
+      <div class="stat-icon yellow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#F6A623"/></svg>
+      </div>
+      <div class="stat-num">4.9</div>
+      <div class="stat-label">Creator Rating</div>
+      <div class="stat-sub">86 brand reviews</div>
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <div style="display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start;">
+
+    <!-- Opportunities -->
+    <div class="card" style="padding:28px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+        <div>
+          <p class="section-eyebrow">Latest Opportunities</p>
+          <h2 class="section-title">Campaigns that fit you</h2>
+        </div>
+        <a href="explore.html" class="btn btn-ghost">View all</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;" id="opportunities-list"></div>
+    </div>
+
+    <!-- Profile Strength + Quick Links -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <!-- Profile Strength -->
+      <div class="card" style="padding:24px;">
+        <p class="section-eyebrow" style="margin-bottom:8px;">Profile Strength</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+          <h3 style="font-size:24px;font-weight:800;color:var(--ink);">85% complete</h3>
+          <div style="position:relative;width:56px;height:56px;">
+            <svg viewBox="0 0 56 56" width="56" height="56">
+              <circle cx="28" cy="28" r="24" fill="none" stroke="#E5E7EB" stroke-width="5"/>
+              <circle cx="28" cy="28" r="24" fill="none" stroke="var(--primary)" stroke-width="5"
+                stroke-dasharray="150.8" stroke-dashoffset="22.6"
+                stroke-linecap="round" transform="rotate(-90 28 28)"/>
+            </svg>
+            <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--primary);">85%</span>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--ink-3);margin-bottom:20px;line-height:1.5;">Add 2 recent portfolio videos to boost your chances of being discovered by brands.</p>
+        <a href="media-kit.html" class="btn btn-outline btn-sm" style="width:100%;display:flex;">Complete Profile</a>
+
+        <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--border);">
+          <p style="font-size:12px;font-weight:700;color:var(--ink-2);margin-bottom:12px;">What's missing:</p>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-3);">
+              <span style="width:18px;height:18px;border-radius:50%;background:var(--yellow-light);color:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;">!</span>
+              Add 2 portfolio videos
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink-3);">
+              <span style="width:18px;height:18px;border-radius:50%;background:var(--yellow-light);color:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;">!</span>
+              Connect your TikTok account
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--green);">
+              <span style="width:18px;height:18px;border-radius:50%;background:var(--green-light);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;">✓</span>
+              Rate card filled in
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <a href="chat.html" class="card" style="padding:18px;display:flex;align-items:center;gap:12px;text-decoration:none;transition:box-shadow .18s;" onmouseover="this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.boxShadow=''">
+        <div class="stat-icon violet" style="margin-bottom:0;flex-shrink:0;width:36px;height:36px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#5B4FE8" stroke-width="2" fill="none"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:14px;font-weight:700;color:var(--ink);">Messages</div>
+          <div style="font-size:12px;color:var(--ink-3);">2 unread from brands</div>
+        </div>
+        <span class="badge badge-red">2</span>
+      </a>
+
+      <a href="ads.html" class="card" style="padding:18px;display:flex;align-items:center;gap:12px;text-decoration:none;transition:box-shadow .18s;" onmouseover="this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.boxShadow=''">
+        <div class="stat-icon yellow" style="margin-bottom:0;flex-shrink:0;width:36px;height:36px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="#F6A623" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div style="font-size:14px;font-weight:700;color:var(--ink);">Promote Profile</div>
+          <div style="font-size:12px;color:var(--ink-3);">Boost visibility with Ads</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-earnings">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Earnings This Month</h3>
+      <button class="modal-close" onclick="closeModal('modal-earnings')">×</button>
+    </div>
+    <div style="background:var(--green-light);border-radius:var(--radius-m);padding:24px;text-align:center;margin-bottom:20px;">
+      <div style="font-size:40px;font-weight:800;color:var(--ink);letter-spacing:-0.03em;">Rp 8.4M</div>
+      <div style="font-size:13px;color:var(--green);font-weight:700;margin-top:6px;">+18% vs last month</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="modal-list-item"><span style="font-size:14px;font-weight:600;color:var(--ink-2);">Lumera Beauty – Reels ×2</span><span style="font-size:15px;font-weight:800;color:var(--green);">Rp 2.8M</span></div>
+      <div class="modal-list-item"><span style="font-size:14px;font-weight:600;color:var(--ink-2);">Hutan Kopi – Story Series</span><span style="font-size:15px;font-weight:800;color:var(--green);">Rp 1.6M</span></div>
+      <div class="modal-list-item"><span style="font-size:14px;font-weight:600;color:var(--ink-2);">Verdana Sport – TikTok</span><span style="font-size:15px;font-weight:800;color:var(--green);">Rp 2.2M</span></div>
+      <div class="modal-list-item"><span style="font-size:14px;font-weight:600;color:var(--ink-2);">Nauri Organics – UGC</span><span style="font-size:15px;font-weight:800;color:var(--green);">Rp 1.8M</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-active-campaigns">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Active Campaigns (3)</h3>
+      <button class="modal-close" onclick="closeModal('modal-active-campaigns')">×</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="avatar-letter" style="background:#FECACA;color:#DC2626;width:40px;height:40px;font-size:14px;border-radius:10px;">L</div>
+          <div><div style="font-size:15px;font-weight:700;">Glow Routine Series</div><div style="font-size:12px;color:var(--ink-3);">Lumera Beauty</div></div>
+          <span style="margin-left:auto;font-size:12px;font-weight:600;background:var(--bg);color:var(--ink-3);padding:5px 12px;border-radius:999px;border:1px solid var(--border);">Awaiting brief</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink-4);">Content due: May 20</div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="avatar-letter" style="background:#FEF3C7;color:#D97706;width:40px;height:40px;font-size:14px;border-radius:10px;">H</div>
+          <div><div style="font-size:15px;font-weight:700;">Morning Ritual Vlog</div><div style="font-size:12px;color:var(--ink-3);">Hutan Kopi</div></div>
+          <span style="margin-left:auto;font-size:12px;font-weight:600;background:var(--bg);color:var(--ink-3);padding:5px 12px;border-radius:999px;border:1px solid var(--border);">Revision #1</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink-4);">Content due: May 25</div>
+      </div>
+      <div class="modal-list-item" style="flex-direction:column;align-items:stretch;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div class="avatar-letter" style="background:#D1FAE5;color:#059669;width:40px;height:40px;font-size:14px;border-radius:10px;">V</div>
+          <div><div style="font-size:15px;font-weight:700;">Active Lifestyle Reel</div><div style="font-size:12px;color:var(--ink-3);">Verdana Sport</div></div>
+          <span style="margin-left:auto;font-size:12px;font-weight:600;background:var(--bg);color:var(--ink-3);padding:5px 12px;border-radius:999px;border:1px solid var(--border);">Pending approval</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink-4);">Content due: May 30</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-profile-views">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Profile Views — This Week</h3>
+      <button class="modal-close" onclick="closeModal('modal-profile-views')">×</button>
+    </div>
+    <div style="background:#EFF6FF;border-radius:var(--radius-m);padding:24px;text-align:center;margin-bottom:20px;">
+      <div style="font-size:40px;font-weight:800;color:var(--ink);letter-spacing:-0.03em;">1.2K</div>
+      <div style="font-size:13px;color:var(--blue);font-weight:700;margin-top:6px;">+164 compared to last week</div>
+    </div>
+    <div>
+      <div class="bar-row"><span class="bar-label">Monday</span><div class="bar-track"><div class="bar-fill" style="width:73%;background:var(--blue);"></div></div><span class="bar-count">148</span></div>
+      <div class="bar-row"><span class="bar-label">Tuesday</span><div class="bar-track"><div class="bar-fill" style="width:80%;background:var(--blue);"></div></div><span class="bar-count">162</span></div>
+      <div class="bar-row"><span class="bar-label">Wednesday</span><div class="bar-track"><div class="bar-fill" style="width:87%;background:var(--blue);"></div></div><span class="bar-count">175</span></div>
+      <div class="bar-row"><span class="bar-label">Thursday</span><div class="bar-track"><div class="bar-fill" style="width:100%;background:var(--blue);"></div></div><span class="bar-count">201</span></div>
+      <div class="bar-row"><span class="bar-label">Friday</span><div class="bar-track"><div class="bar-fill" style="width:94%;background:var(--blue);"></div></div><span class="bar-count">190</span></div>
+      <div class="bar-row"><span class="bar-label">Saturday</span><div class="bar-track"><div class="bar-fill" style="width:82%;background:var(--blue);"></div></div><span class="bar-count">165</span></div>
+      <div class="bar-row"><span class="bar-label">Sunday</span><div class="bar-track"><div class="bar-fill" style="width:79%;background:var(--blue);"></div></div><span class="bar-count">159</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-rating">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Creator Rating (4.9)</h3>
+      <button class="modal-close" onclick="closeModal('modal-rating')">×</button>
+    </div>
+    <div style="background:var(--yellow-light);border-radius:var(--radius-m);padding:24px;text-align:center;margin-bottom:20px;">
+      <div style="font-size:48px;font-weight:800;color:var(--ink);">4.9</div>
+      <div style="color:var(--yellow);font-size:24px;margin:4px 0;">★★★★★</div>
+      <div style="font-size:13px;color:var(--ink-3);">from 86 brand reviews</div>
+    </div>
+    <div>
+      <div class="rating-bar-row"><span class="rating-bar-label">5★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:93%;"></div></div><span class="rating-bar-count">80</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">4★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:6%;"></div></div><span class="rating-bar-count">5</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">3★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:1%;"></div></div><span class="rating-bar-count">1</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">2★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+      <div class="rating-bar-row"><span class="rating-bar-label">1★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:0%;"></div></div><span class="rating-bar-count">0</span></div>
+    </div>
+  </div>
+</div>
+
+<button class="fab-help" onclick="alert('Need help? Contact support@kawankonten.id')">?</button>
+
+<script src="shared.js"></script>
+<script>
+function renderOpportunities() {
+  var list = document.getElementById('opportunities-list');
+  if (!list) return;
+  list.innerHTML = '';
+  opportunities.forEach(function(p) {
+    var item = document.createElement('div');
+    item.className = 'card';
+    item.style.cssText = 'padding:16px 20px;border:1.5px solid var(--border);display:flex;align-items:center;gap:14px;cursor:pointer;transition:box-shadow .15s;';
+    item.innerHTML =
+      '<div style="width:40px;height:40px;border-radius:10px;background:' + p.color + ';color:' + p.textColor + ';display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;flex-shrink:0;">' + p.letter + '</div>' +
+      '<div style="flex:1;">' +
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:2px;">' +
+          '<span style="font-size:11px;color:' + p.textColor + ';font-weight:700;">' + p.brand + '</span>' +
+          '<span style="font-size:10px;font-weight:800;background:var(--green-light);color:#059669;padding:2px 8px;border-radius:999px;">' + p.match + '% FIT</span>' +
+        '</div>' +
+        '<div style="font-size:14px;font-weight:700;color:var(--ink);">' + p.title + '</div>' +
+        '<div style="font-size:12px;color:var(--ink-3);">' + p.type + ' · ' + p.deadline + '</div>' +
+      '</div>' +
+      '<div style="text-align:right;flex-shrink:0;">' +
+        '<div style="font-size:15px;font-weight:800;color:var(--ink);">' + p.budget + '</div>' +
+        '<span style="font-size:12px;color:var(--primary);font-weight:600;cursor:pointer;">View brief →</span>' +
+      '</div>';
+    item.onmouseover = function(){ this.style.boxShadow = 'var(--shadow-lg)'; };
+    item.onmouseout  = function(){ this.style.boxShadow = ''; };
+    list.appendChild(item);
+  });
+}
+document.addEventListener('DOMContentLoaded', renderOpportunities);
+</script>
+</body>
+</html>
