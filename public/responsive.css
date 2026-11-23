@@ -1,0 +1,90 @@
+/* KawanKonten responsive layer — loaded after shared.css / page styles */
+img, svg, video { max-width: 100%; }
+.card, .wrap > *, [style*="grid-template-columns"] > * { min-width: 0; }
+.nav-burger, .nav-drawer, .chat-back { display: none; }
+
+/* ---------- Tablet (<= 900px) ---------- */
+@media (max-width: 900px) {
+  /* sidebar layouts (main + 300/320/340px column) stack */
+  [style*="grid-template-columns"][style*="300px"],
+  [style*="grid-template-columns"][style*="320px"],
+  [style*="grid-template-columns"][style*="340px"] { grid-template-columns: 1fr !important; }
+  /* 3- and 4-column card grids -> 2 columns */
+  [style*="grid-template-columns"][style*="repeat(3"],
+  [style*="grid-template-columns"][style*="repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
+  .stat-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+/* ---------- Phone (<= 768px) ---------- */
+@media (max-width: 768px) {
+  .wrap { padding: 0 16px; }
+  .nav-inner { height: 56px; gap: 8px; }
+  .nav-logo { font-size: 18px; }
+  .nav-right { margin-left: auto; }
+  .mode-pill { padding: 6px 12px; font-size: 12px; }
+
+  /* hamburger + drawer (built by responsive.js) */
+  .nav-burger {
+    display: inline-flex; flex-direction: column; justify-content: center; gap: 4px;
+    width: 40px; height: 40px; padding: 10px; border: 0; border-radius: 10px;
+    background: var(--primary-light);
+  }
+  .nav-burger span { display: block; height: 2px; border-radius: 2px; background: var(--primary); transition: .2s; }
+  .nav.open .nav-burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav.open .nav-burger span:nth-child(2) { opacity: 0; }
+  .nav.open .nav-burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav-drawer {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-lg);
+    padding: 8px 16px 16px; flex-direction: column;
+  }
+  .nav.open .nav-drawer { display: flex; }
+  .nav-drawer a { padding: 14px 8px; font-size: 16px; font-weight: 600; color: var(--ink-2);
+    border-bottom: 1px solid var(--border); cursor: pointer; }
+  .nav-drawer a.active { color: var(--primary); }
+  .nav-drawer a:last-child { border-bottom: 0; }
+
+  /* typography */
+  h1 { font-size: 28px !important; line-height: 1.2 !important; }
+  .section-title { font-size: 22px; }
+
+  /* hero / header rows wrap instead of overflowing */
+  .wrap[style*="display:flex"], .wrap[style*="display: flex"] { flex-wrap: wrap; }
+
+  /* inputs: 16px stops iOS zoom-on-focus; comfortable tap targets */
+  input, select, textarea, .field { font-size: 16px !important; }
+  .btn { min-height: 42px; }
+  .btn-sm { min-height: 36px; }
+
+  /* modals become bottom sheets */
+  .modal-overlay { align-items: flex-end !important; padding: 0 !important; }
+  .modal { width: 100% !important; max-width: 100% !important; max-height: 92vh; max-height: 92dvh;
+    overflow-y: auto; border-radius: 20px 20px 0 0 !important; }
+
+  .fab-help { right: 12px; bottom: 12px; transform: scale(.9); }
+
+  /* chat: list <-> conversation, one at a time */
+  .chat-layout { display: block !important; height: calc(100vh - 56px); height: calc(100dvh - 56px); }
+  .chat-sidebar { display: flex !important; position: static !important; width: 100% !important;
+    height: 100%; border-right: 0; }
+  .chat-main { display: none !important; height: 100%; }
+  .chat-layout.chat-open .chat-sidebar { display: none !important; }
+  .chat-layout.chat-open .chat-main { display: flex !important; }
+  .chat-main-header { padding: 12px 14px !important; gap: 10px !important; flex-wrap: wrap; }
+  .chat-back { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px;
+    border: 0; border-radius: 10px; background: var(--primary-light); color: var(--primary);
+    font-size: 20px; font-weight: 700; flex-shrink: 0; }
+}
+
+/* ---------- Small phone (<= 560px) ---------- */
+@media (max-width: 560px) {
+  [style*="grid-template-columns"][style*="1fr 1fr"],
+  [style*="grid-template-columns"][style*="repeat(2"],
+  [style*="grid-template-columns"][style*="repeat(3"],
+  [style*="grid-template-columns"][style*="repeat(4"],
+  .role-grid { grid-template-columns: 1fr !important; }
+  .stat-grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+  .stat-card { padding: 14px !important; }
+  h1 { font-size: 25px !important; }
+  .btn-lg { padding: 14px 24px; font-size: 15px; }
+}
