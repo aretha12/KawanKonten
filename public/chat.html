@@ -156,6 +156,7 @@
     .chat-sidebar.show { display: flex; position: fixed; inset: 0; z-index: 99; width: 100%; }
   }
 </style>
+<link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 
@@ -169,15 +170,15 @@
       <span><span class="logo-kawan">Kawan</span><span class="logo-konten">Konten</span></span>
     </a>
     <div class="nav-links">
-      <a href="brand.html">Brand Dashboard</a>
-      <a href="creator.html">Creator Dashboard</a>
-      <a href="explore.html">Explore</a>
+      <a href="brand.html">Dashboard</a>
+      <a href="explore.html">Find Creators</a>
+      <a href="campaigns.html">Campaigns</a>
       <a href="ads.html">Ads</a>
       <a href="chat.html" class="active">Messages</a>
     </div>
     <div class="nav-right">
       <a href="index.html" class="mode-pill">
-        <span class="mode-dot"></span> Messages
+        <span class="mode-dot"></span> Brand Mode
       </a>
     </div>
   </div>
@@ -654,5 +655,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (threads.length > 0) openThread(threads[0].id);
 });
 </script>
+<script src="responsive.js"></script>
 </body>
 </html>
